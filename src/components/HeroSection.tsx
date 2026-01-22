@@ -5,13 +5,19 @@ import MatrixRain from "./MatrixRain";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const HeroSection = () => {
-  const terminalLines = [
-    "whoami",
-    "Marwan Mohamed Zein",
-    "cat skills.txt",
-    "Backend • Embedded • IoT • Linux • Rust",
-    "echo $PASSION",
-    "Building robust, scalable systems",
+  const terminalCommands = [
+    { type: "command" as const, text: "neofetch --name" },
+    { type: "success" as const, text: "█▀▄▀█ ▄▀█ █▀█ █░█░█ ▄▀█ █▄░█" },
+    { type: "success" as const, text: "█░▀░█ █▀█ █▀▄ ▀▄▀▄▀ █▀█ █░▀█" },
+    { type: "command" as const, text: "cat /etc/skills" },
+    { type: "info" as const, text: "├── Backend Development" },
+    { type: "info" as const, text: "├── Embedded Systems & IoT" },
+    { type: "info" as const, text: "├── Linux & Rust" },
+    { type: "info" as const, text: "└── System Architecture" },
+    { type: "command" as const, text: "echo $LOCATION" },
+    { type: "output" as const, text: "Alexandria, Egypt 🇪🇬" },
+    { type: "command" as const, text: "./start_journey.sh" },
+    { type: "success" as const, text: "✓ Ready to build something amazing!" },
   ];
 
   return (
@@ -120,7 +126,7 @@ const HeroSection = () => {
               </div>
             </div>
             
-            <Terminal lines={terminalLines} className="shadow-xl" />
+            <Terminal commands={terminalCommands} className="shadow-xl" />
           </div>
         </div>
       </div>
