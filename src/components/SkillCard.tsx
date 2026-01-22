@@ -6,15 +6,11 @@ interface SkillCardProps {
   title: string;
   description: string;
   technologies: string[];
-  delay?: number;
 }
 
-const SkillCard = ({ icon: Icon, title, description, technologies, delay = 0 }: SkillCardProps) => {
+const SkillCard = ({ icon: Icon, title, description, technologies }: SkillCardProps) => {
   return (
-    <Card 
-      className="group bg-card hover:shadow-glow transition-all duration-300 border-border hover:border-primary/50 opacity-0 animate-fade-in"
-      style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
-    >
+    <Card className="group bg-card hover:shadow-glow transition-all duration-300 border-border hover:border-primary/50 h-full">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-accent text-accent-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">

@@ -1,5 +1,6 @@
 import { Server, Cpu, Terminal, Database, Cloud, Wrench } from "lucide-react";
 import SkillCard from "./SkillCard";
+import ScrollReveal from "./ScrollReveal";
 
 const SkillsSection = () => {
   const skills = [
@@ -44,22 +45,26 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Technical <span className="text-primary">Skills</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive toolkit built over years of hands-on experience with various technologies and paradigms.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Technical <span className="text-primary">Skills</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A comprehensive toolkit built over years of hands-on experience with various technologies and paradigms.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {skills.map((skill, index) => (
-            <SkillCard
+            <ScrollReveal 
               key={skill.title}
-              {...skill}
+              animation="fade-up"
               delay={index * 100}
-            />
+            >
+              <SkillCard {...skill} />
+            </ScrollReveal>
           ))}
         </div>
       </div>

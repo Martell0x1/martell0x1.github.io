@@ -1,4 +1,5 @@
 import ProjectCard from "./ProjectCard";
+import ScrollReveal from "./ScrollReveal";
 
 const ProjectsSection = () => {
   const projects = [
@@ -43,22 +44,26 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured <span className="text-primary">Projects</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A selection of projects showcasing my expertise in backend development, embedded systems, and infrastructure.
-          </p>
-        </div>
+        <ScrollReveal animation="fade-up">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Featured <span className="text-primary">Projects</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A selection of projects showcasing my expertise in backend development, embedded systems, and infrastructure.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {projects.map((project, index) => (
-            <ProjectCard
+            <ScrollReveal 
               key={project.title}
-              {...project}
+              animation="fade-up"
               delay={index * 100}
-            />
+            >
+              <ProjectCard {...project} />
+            </ScrollReveal>
           ))}
         </div>
       </div>
