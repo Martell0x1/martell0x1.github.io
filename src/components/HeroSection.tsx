@@ -1,25 +1,30 @@
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Terminal from "./Terminal";
+import MatrixRain from "./MatrixRain";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const HeroSection = () => {
   const terminalLines = [
     "whoami",
-    "Full Stack Developer",
+    "Marwan Mohamed Zein",
     "cat skills.txt",
-    "Backend • Embedded • IoT • Linux • Systems",
+    "Backend • Embedded • IoT • Linux • Rust",
     "echo $PASSION",
     "Building robust, scalable systems",
   ];
 
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
+      {/* Matrix Rain Background */}
+      <MatrixRain />
+      
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--accent))_0%,transparent_50%)] opacity-50" />
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
       
@@ -32,9 +37,24 @@ const HeroSection = () => {
               Available for opportunities
             </div>
             
+            {/* Profile Photo - Mobile */}
+            <div className="lg:hidden flex justify-center mb-6">
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-full blur-md opacity-75 animate-pulse" />
+                <img 
+                  src={profilePhoto} 
+                  alt="Marwan Mohamed Zein"
+                  className="relative w-32 h-32 rounded-full object-cover border-2 border-primary/50 shadow-glow"
+                />
+              </div>
+            </div>
+            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Hi, I'm{" "}
-              <span className="text-primary">Marwan</span>
+              <span className="text-primary relative inline-block group">
+                Marwan
+                <span className="absolute -inset-1 bg-primary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </span>
             </h1>
             
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
@@ -82,8 +102,24 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Content - Terminal */}
-          <div className="opacity-0 animate-fade-in" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
+          {/* Right Content - Profile Photo + Terminal */}
+          <div className="space-y-6 opacity-0 animate-fade-in" style={{ animationDelay: '500ms', animationFillMode: 'forwards' }}>
+            {/* Profile Photo - Desktop */}
+            <div className="hidden lg:flex justify-center mb-6">
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary via-primary/50 to-primary rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500 animate-pulse" />
+                <div className="relative">
+                  <img 
+                    src={profilePhoto} 
+                    alt="Marwan Mohamed Zein"
+                    className="w-48 h-48 rounded-full object-cover border-4 border-card shadow-2xl"
+                  />
+                  {/* Glitch overlay effect on hover */}
+                  <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 group-hover:animate-flicker transition-opacity" />
+                </div>
+              </div>
+            </div>
+            
             <Terminal lines={terminalLines} className="shadow-xl" />
           </div>
         </div>
@@ -92,7 +128,7 @@ const HeroSection = () => {
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style={{ animationDelay: '1000ms', animationFillMode: 'forwards' }}>
         <a href="#about" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-          <span className="text-xs font-medium">Scroll</span>
+          <span className="text-xs font-medium font-mono">&gt;_ scroll</span>
           <ArrowDown className="w-4 h-4 animate-bounce" />
         </a>
       </div>
