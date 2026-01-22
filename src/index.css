@@ -10,7 +10,7 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  /* Tokyo Night Theme - Light Mode (Tokyo Night Light) */
+  /* NestJS Theme - Light Mode */
   :root {
     --background: 225 27% 96%;
     --foreground: 231 30% 20%;
@@ -21,7 +21,7 @@ All colors MUST be HSL.
     --popover: 225 25% 100%;
     --popover-foreground: 231 30% 20%;
 
-    --primary: 267 84% 60%;
+    --primary: 346 82% 51%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 225 20% 90%;
@@ -30,31 +30,31 @@ All colors MUST be HSL.
     --muted: 225 20% 92%;
     --muted-foreground: 231 15% 45%;
 
-    --accent: 267 50% 92%;
-    --accent-foreground: 267 84% 50%;
+    --accent: 346 60% 92%;
+    --accent-foreground: 346 82% 45%;
 
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 85% 97%;
 
     --border: 225 20% 88%;
     --input: 225 20% 88%;
-    --ring: 267 84% 60%;
+    --ring: 346 82% 51%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 225 25% 100%;
     --sidebar-foreground: 231 30% 20%;
-    --sidebar-primary: 267 84% 60%;
+    --sidebar-primary: 346 82% 51%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 267 50% 92%;
-    --sidebar-accent-foreground: 267 84% 50%;
+    --sidebar-accent: 346 60% 92%;
+    --sidebar-accent-foreground: 346 82% 45%;
     --sidebar-border: 225 20% 88%;
-    --sidebar-ring: 267 84% 60%;
+    --sidebar-ring: 346 82% 51%;
 
-    --chart-1: 267 84% 60%;
+    --chart-1: 346 82% 51%;
     --chart-2: 187 80% 45%;
     --chart-3: 35 90% 55%;
-    --chart-4: 340 80% 60%;
+    --chart-4: 280 60% 50%;
     --chart-5: 120 50% 45%;
 
     --sidebar: 225 25% 100%;
@@ -75,66 +75,66 @@ All colors MUST be HSL.
     --tracking-normal: 0em;
     --spacing: 0.25rem;
 
-    /* Tokyo Night custom tokens */
-    --terminal-bg: 235 25% 13%;
-    --terminal-text: 187 80% 60%;
-    --terminal-cursor: 267 84% 65%;
-    --gradient-hero: linear-gradient(135deg, hsl(267 84% 60%), hsl(187 80% 50%));
+    /* NestJS custom tokens */
+    --terminal-bg: 220 25% 10%;
+    --terminal-text: 120 70% 55%;
+    --terminal-cursor: 346 82% 55%;
+    --gradient-hero: linear-gradient(135deg, hsl(346 82% 51%), hsl(346 82% 35%));
     --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(225 25% 98%));
   }
 
-  /* Tokyo Night Theme - Dark Mode (Tokyo Night Storm) */
+  /* NestJS Theme - Dark Mode */
   .dark {
-    --background: 235 25% 13%;
-    --foreground: 220 20% 90%;
+    --background: 220 25% 8%;
+    --foreground: 220 20% 92%;
 
-    --card: 235 22% 17%;
+    --card: 220 22% 12%;
     --card-foreground: 220 20% 92%;
 
-    --popover: 235 22% 20%;
+    --popover: 220 22% 15%;
     --popover-foreground: 220 20% 92%;
 
-    --primary: 267 84% 68%;
-    --primary-foreground: 235 25% 10%;
+    --primary: 346 82% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 235 18% 25%;
+    --secondary: 220 18% 20%;
     --secondary-foreground: 220 20% 85%;
 
-    --muted: 235 18% 22%;
-    --muted-foreground: 220 15% 60%;
+    --muted: 220 18% 18%;
+    --muted-foreground: 220 15% 55%;
 
-    --accent: 267 40% 22%;
-    --accent-foreground: 267 84% 75%;
+    --accent: 346 40% 18%;
+    --accent-foreground: 346 82% 65%;
 
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 235 18% 25%;
-    --input: 235 18% 25%;
-    --ring: 267 84% 68%;
+    --border: 220 18% 20%;
+    --input: 220 18% 20%;
+    --ring: 346 82% 55%;
 
-    --sidebar-background: 235 25% 11%;
-    --sidebar-foreground: 220 20% 90%;
-    --sidebar-primary: 267 84% 68%;
-    --sidebar-primary-foreground: 235 25% 10%;
-    --sidebar-accent: 267 40% 22%;
-    --sidebar-accent-foreground: 267 84% 75%;
-    --sidebar-border: 235 18% 25%;
-    --sidebar-ring: 267 84% 68%;
+    --sidebar-background: 220 25% 6%;
+    --sidebar-foreground: 220 20% 92%;
+    --sidebar-primary: 346 82% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 346 40% 18%;
+    --sidebar-accent-foreground: 346 82% 65%;
+    --sidebar-border: 220 18% 20%;
+    --sidebar-ring: 346 82% 55%;
 
-    --chart-1: 267 84% 68%;
+    --chart-1: 346 82% 55%;
     --chart-2: 187 80% 55%;
     --chart-3: 35 90% 60%;
-    --chart-4: 340 80% 65%;
+    --chart-4: 280 60% 60%;
     --chart-5: 120 50% 55%;
 
-    --sidebar: 235 22% 17%;
+    --sidebar: 220 22% 12%;
 
-    --terminal-bg: 235 28% 9%;
-    --terminal-text: 187 80% 65%;
-    --terminal-cursor: 267 84% 70%;
-    --gradient-hero: linear-gradient(135deg, hsl(267 84% 65%), hsl(187 80% 55%));
-    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(235 25% 12%));
+    --terminal-bg: 220 30% 5%;
+    --terminal-text: 120 70% 55%;
+    --terminal-cursor: 346 82% 60%;
+    --gradient-hero: linear-gradient(135deg, hsl(346 82% 55%), hsl(346 82% 40%));
+    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(220 25% 10%));
 
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.2);

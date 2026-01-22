@@ -89,8 +89,26 @@ export default {
 				to: { opacity: '1', transform: 'translateX(0)' }
 			},
 			'glow': {
-				'0%, 100%': { boxShadow: '0 0 20px hsl(267 84% 60% / 0.3)' },
-				'50%': { boxShadow: '0 0 40px hsl(267 84% 60% / 0.5)' }
+				'0%, 100%': { boxShadow: '0 0 20px hsl(346 82% 55% / 0.3)' },
+				'50%': { boxShadow: '0 0 40px hsl(346 82% 55% / 0.5)' }
+			},
+			'matrix-rain': {
+				'0%': { transform: 'translateY(-100%)', opacity: '0' },
+				'10%': { opacity: '1' },
+				'90%': { opacity: '1' },
+				'100%': { transform: 'translateY(100vh)', opacity: '0' }
+			},
+			'glitch': {
+				'0%, 100%': { transform: 'translate(0)' },
+				'20%': { transform: 'translate(-2px, 2px)' },
+				'40%': { transform: 'translate(-2px, -2px)' },
+				'60%': { transform: 'translate(2px, 2px)' },
+				'80%': { transform: 'translate(2px, -2px)' }
+			},
+			'flicker': {
+				'0%, 100%': { opacity: '1' },
+				'50%': { opacity: '0.8' },
+				'75%': { opacity: '0.9' }
 			}
 		},
 		animation: {
@@ -100,7 +118,10 @@ export default {
 			'typewriter': 'typewriter 2s steps(30) forwards',
 			'fade-in': 'fade-in 0.6s ease-out forwards',
 			'slide-in-left': 'slide-in-left 0.5s ease-out forwards',
-			'glow': 'glow 2s ease-in-out infinite'
+			'glow': 'glow 2s ease-in-out infinite',
+			'matrix-rain': 'matrix-rain 8s linear infinite',
+			'glitch': 'glitch 0.3s ease-in-out infinite',
+			'flicker': 'flicker 0.15s ease-in-out infinite'
 		},
 		boxShadow: {
 			'2xs': 'var(--shadow-2xs)',
@@ -110,8 +131,8 @@ export default {
 			lg: 'var(--shadow-lg)',
 			xl: 'var(--shadow-xl)',
 			'2xl': 'var(--shadow-2xl)',
-			'glow': '0 0 30px hsl(267 84% 60% / 0.3)',
-			'glow-lg': '0 0 50px hsl(267 84% 60% / 0.4)'
+			'glow': '0 0 30px hsl(346 82% 55% / 0.3)',
+			'glow-lg': '0 0 50px hsl(346 82% 55% / 0.4)'
 		},
 		fontFamily: {
 			sans: ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
