@@ -42,20 +42,24 @@ const COMMANDS: Record<string, CommandOutput[]> = {
     { type: "info", text: "Location: Alexandria, Egypt 🇪🇬" },
     { type: "info", text: "Languages: Rust, C++, TypeScript, Python" },
     { type: "info", text: "Status: Open to opportunities" },
+    {
+      type: "success",
+      text: "Welcom to Martell0x1's Terminal ! , Type 'help' for commands",
+    },
   ],
   skills: [
     { type: "success", text: "Technical Skills:" },
     { type: "info", text: "├── Backend" },
     { type: "output", text: "│   ├── Node.js / Express / NestJS" },
-    { type: "output", text: "│   ├── Rust / Actix-web" },
-    { type: "output", text: "│   └── PostgreSQL / MongoDB" },
+    { type: "output", text: "│   ├── .NET / ASP.NET Core - MVC" },
+    { type: "output", text: "│   └── PostgreSQL / MongoDB / MSSQL" },
     { type: "info", text: "├── Embedded & IoT" },
     { type: "output", text: "│   ├── ESP32 / Arduino" },
     { type: "output", text: "│   ├── Bare Metal Programming" },
     { type: "output", text: "│   └── MQTT / BLE protocols" },
     { type: "info", text: "├── Frontend" },
-    { type: "output", text: "│   ├── React / TypeScript" },
-    { type: "output", text: "│   └── Tailwind CSS" },
+    { type: "output", text: "│   ├── Angular / TypeScript" },
+    { type: "output", text: "│   └── HTML | CSS | JS" },
     { type: "info", text: "└── DevOps" },
     { type: "output", text: "    ├── Docker / Linux" },
     { type: "output", text: "    └── AWS / CI/CD" },
@@ -65,7 +69,7 @@ const COMMANDS: Record<string, CommandOutput[]> = {
     { type: "info", text: "1. Rusty x86-64 OS Kernel" },
     { type: "output", text: "   A bare-metal OS kernel written in Rust" },
     { type: "info", text: "2. VisionGate - IoT Access Control" },
-    { type: "output", text: "   Face recognition system with ESP32" },
+    { type: "output", text: "   Smart Iot Parking system with ESP32" },
     { type: "info", text: "3. LED Controller ESP32" },
     { type: "output", text: "   Smart LED strip controller via BLE" },
     { type: "info", text: "4. Express.js RESTful API" },
@@ -74,7 +78,7 @@ const COMMANDS: Record<string, CommandOutput[]> = {
   ],
   contact: [
     { type: "success", text: "Get in touch:" },
-    { type: "info", text: "📧 Email: marwan@example.com" },
+    { type: "info", text: "📧 Email: marwan222@@gmail.com" },
     { type: "info", text: "🐙 GitHub: github.com/Martell0x1" },
     { type: "info", text: "💼 LinkedIn: linkedin.com/in/marawan-zein" },
     { type: "path", text: "→ Or use the contact form below!" },
@@ -87,19 +91,25 @@ const COMMANDS: Record<string, CommandOutput[]> = {
   whoami: [
     { type: "success", text: "Marwan Mohamed Zein (Martell0x1)" },
     { type: "output", text: "Full Stack Developer from Alexandria, Egypt" },
-    { type: "output", text: "FCDS Student passionate about building robust systems" },
+    {
+      type: "output",
+      text: "FCDS Student passionate about building robust systems",
+    },
     { type: "output", text: "Specializing in Backend, Embedded Systems & IoT" },
     { type: "info", text: "Currently exploring: OS Development with Rust 🦀" },
   ],
 };
 
-const Terminal = ({ 
+const Terminal = ({
   className = "",
   username = "visitor",
-  hostname = "portfolio"
+  hostname = "portfolio",
 }: TerminalProps) => {
   const [history, setHistory] = useState<CommandOutput[]>([
-    { type: "success", text: "Welcome to Martell0x1's terminal! Type 'help' for commands." },
+    {
+      type: "success",
+      text: "Loading terminal ... Please wait.",
+    },
   ]);
   const [input, setInput] = useState("");
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -107,10 +117,11 @@ const Terminal = ({
   const [showCursor, setShowCursor] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 530);
     return () => clearInterval(interval);
   }, []);
@@ -120,10 +131,30 @@ const Terminal = ({
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [history]);
+  useEffect(() => {
+    const runIntro = async () => {
+      const cmd = "neofetch";
+
+      // اكتب الأمر حرف حرف
+      for (let i = 1; i <= cmd.length; i++) {
+        setInput(cmd.slice(0, i));
+        await new Promise((r) => setTimeout(r, 300));
+      }
+
+      await new Promise((r) => setTimeout(r, 200));
+
+      // نفّذ الأمر
+      handleCommand(cmd);
+      setInput("");
+      setIsTyping(false);
+    };
+
+    runIntro();
+  }, []);
 
   const handleCommand = (cmd: string) => {
     const trimmedCmd = cmd.trim().toLowerCase();
-    
+
     // Add command to history display
     const newHistory: CommandOutput[] = [
       ...history,
@@ -136,7 +167,12 @@ const Terminal = ({
     }
 
     if (trimmedCmd === "clear") {
-      setHistory([{ type: "success", text: "Terminal cleared. Type 'help' for commands." }]);
+      setHistory([
+        {
+          type: "success",
+          text: "Terminal cleared. Type 'help' for commands.",
+        },
+      ]);
       return;
     }
 
@@ -151,7 +187,7 @@ const Terminal = ({
       ]);
     }
 
-    setCommandHistory(prev => [...prev, trimmedCmd]);
+    setCommandHistory((prev) => [...prev, trimmedCmd]);
     setHistoryIndex(-1);
   };
 
@@ -162,7 +198,10 @@ const Terminal = ({
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       if (commandHistory.length > 0) {
-        const newIndex = historyIndex < commandHistory.length - 1 ? historyIndex + 1 : historyIndex;
+        const newIndex =
+          historyIndex < commandHistory.length - 1
+            ? historyIndex + 1
+            : historyIndex;
         setHistoryIndex(newIndex);
         setInput(commandHistory[commandHistory.length - 1 - newIndex] || "");
       }
@@ -178,7 +217,9 @@ const Terminal = ({
       }
     } else if (e.key === "Tab") {
       e.preventDefault();
-      const matches = Object.keys(COMMANDS).filter(c => c.startsWith(input.toLowerCase()));
+      const matches = Object.keys(COMMANDS).filter((c) =>
+        c.startsWith(input.toLowerCase()),
+      );
       if (matches.length === 1) {
         setInput(matches[0]);
       }
@@ -187,14 +228,22 @@ const Terminal = ({
 
   const getColorClass = (cmd: CommandOutput) => {
     switch (cmd.type) {
-      case "command": return "text-[hsl(var(--terminal-text))]";
-      case "output": return "text-muted-foreground";
-      case "error": return "text-destructive";
-      case "success": return "text-primary";
-      case "info": return "text-[hsl(200_80%_60%)]";
-      case "path": return "text-[hsl(280_80%_70%)]";
-      case "ascii": return "text-primary text-xs leading-none";
-      default: return "text-[hsl(var(--terminal-text))]";
+      case "command":
+        return "text-[hsl(var(--terminal-text))]";
+      case "output":
+        return "text-muted-foreground";
+      case "error":
+        return "text-destructive";
+      case "success":
+        return "text-primary";
+      case "info":
+        return "text-[hsl(200_80%_60%)]";
+      case "path":
+        return "text-[hsl(280_80%_70%)]";
+      case "ascii":
+        return "text-primary text-xs leading-none";
+      default:
+        return "text-[hsl(var(--terminal-text))]";
     }
   };
 
@@ -211,7 +260,7 @@ const Terminal = ({
   );
 
   return (
-    <div 
+    <div
       className={`bg-[hsl(var(--terminal-bg))] rounded-xl border border-border/50 overflow-hidden font-mono text-sm shadow-2xl ${className}`}
       onClick={() => inputRef.current?.focus()}
     >
@@ -231,19 +280,24 @@ const Terminal = ({
       </div>
 
       {/* Terminal Body */}
-      <div 
+      <div
         ref={terminalRef}
         className="p-4 space-y-1 min-h-[280px] max-h-[350px] overflow-y-auto bg-gradient-to-b from-transparent to-card/20 cursor-text"
       >
         {history.map((cmd, index) => (
-          <div key={index} className={`flex ${cmd.type === "ascii" ? "justify-center" : ""}`}>
+          <div
+            key={index}
+            className={`flex ${cmd.type === "ascii" ? "justify-center" : ""}`}
+          >
             {cmd.type === "command" && renderPrompt()}
-            <span className={`${getColorClass(cmd)} ${cmd.type === "ascii" ? "whitespace-pre font-bold" : ""}`}>
+            <span
+              className={`${getColorClass(cmd)} ${cmd.type === "ascii" ? "whitespace-pre font-bold" : ""}`}
+            >
               {cmd.text}
             </span>
           </div>
         ))}
-        
+
         {/* Input Line */}
         <div className="flex items-center">
           {renderPrompt(true)}
@@ -258,13 +312,14 @@ const Terminal = ({
               autoFocus
               spellCheck={false}
               autoComplete="off"
+              disabled={isTyping}
             />
-            <span 
+            <span
               className={`absolute top-0 left-0 pointer-events-none text-[hsl(var(--terminal-text))]`}
               style={{ left: `${input.length}ch` }}
             >
-              <span 
-                className={`inline-block w-2.5 h-5 bg-primary transition-opacity ${showCursor ? 'opacity-100' : 'opacity-0'}`} 
+              <span
+                className={`inline-block w-2.5 h-5 bg-primary transition-opacity ${showCursor ? "opacity-100" : "opacity-0"}`}
               />
             </span>
           </div>
@@ -275,7 +330,7 @@ const Terminal = ({
       <div className="px-4 py-2 bg-card/30 border-t border-border/30 flex items-center justify-between text-xs text-muted-foreground">
         <span>zsh • tab to autocomplete • ↑↓ history</span>
         <span className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_6px_#FFA500] animate-pulse" />
           interactive
         </span>
       </div>

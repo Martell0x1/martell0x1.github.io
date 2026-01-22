@@ -22,18 +22,20 @@ const Navigation = () => {
   ];
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm" 
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <a href="#" className="flex items-center gap-2 text-foreground font-semibold">
+          <a
+            href="#"
+            className="flex items-center gap-2 text-foreground font-semibold"
+          >
             <Terminal className="w-5 h-5 text-primary" />
-            <span className="font-mono">dev.portfolio</span>
+            <span className="font-mono">@martell0x1</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -48,7 +50,9 @@ const Navigation = () => {
               </a>
             ))}
             <Button size="sm" className="ml-4">
-              Resume
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Resume
+              </a>
             </Button>
           </div>
 
