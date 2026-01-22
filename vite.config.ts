@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "https://github.com/Martell0x1/system-forge",
+  base: "/system-forge/",
   server: {
     host: "::",
     port: 8080,
