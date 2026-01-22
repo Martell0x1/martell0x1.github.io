@@ -89,8 +89,8 @@ export default {
 				to: { opacity: '1', transform: 'translateX(0)' }
 			},
 			'glow': {
-				'0%, 100%': { boxShadow: '0 0 20px hsl(165 70% 50% / 0.3)' },
-				'50%': { boxShadow: '0 0 40px hsl(165 70% 50% / 0.5)' }
+				'0%, 100%': { boxShadow: '0 0 20px hsl(267 84% 60% / 0.3)' },
+				'50%': { boxShadow: '0 0 40px hsl(267 84% 60% / 0.5)' }
 			}
 		},
 		animation: {
@@ -110,8 +110,8 @@ export default {
 			lg: 'var(--shadow-lg)',
 			xl: 'var(--shadow-xl)',
 			'2xl': 'var(--shadow-2xl)',
-			'glow': '0 0 30px hsl(165 70% 50% / 0.3)',
-			'glow-lg': '0 0 50px hsl(165 70% 50% / 0.4)'
+			'glow': '0 0 30px hsl(267 84% 60% / 0.3)',
+			'glow-lg': '0 0 50px hsl(267 84% 60% / 0.4)'
 		},
 		fontFamily: {
 			sans: ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
