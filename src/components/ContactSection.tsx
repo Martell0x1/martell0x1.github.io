@@ -6,9 +6,9 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const ContactSection = () => {
   const contactLinks = [
-    { icon: Github, label: "GitHub", href: "https://github.com", username: "@yourusername" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", username: "Your Name" },
-    { icon: Mail, label: "Email", href: "mailto:hello@example.com", username: "hello@example.com" },
+    { icon: Github, label: "GitHub", href: "https://github.com/Martell0x1", username: "@Martell0x1" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/marawan-zein/", username: "Marwan Mohamed Zein" },
+    { icon: Mail, label: "Email", href: "mailto:marwan@example.com", username: "marwan@example.com" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -41,7 +41,7 @@ const ContactSection = () => {
 
             <div className="flex items-center gap-3 text-muted-foreground opacity-0 animate-fade-in" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
               <MapPin className="w-5 h-5 text-primary" />
-              <span>Available for remote work worldwide</span>
+              <span>Alexandria, Egypt • Available worldwide</span>
             </div>
 
             <div className="space-y-3 pt-4">

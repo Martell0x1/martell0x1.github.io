@@ -18,15 +18,15 @@ const AboutSection = () => {
           
           <div className="space-y-6 opacity-0 animate-fade-in" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a full-stack developer with a strong passion for backend development and systems programming. 
-              My journey in tech has led me through the depths of Linux internals, the intricacies of embedded systems, 
-              and the exciting world of IoT development.
+              I'm Marwan, a Software Engineer and FCDS student from Alexandria, Egypt. I have a strong passion 
+              for backend development, systems programming, and building things from the ground up. 
+              My journey has led me through OS development in Rust, IoT projects with ESP32, and cloud integrations with AWS.
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I believe in writing clean, efficient code that not only works but scales. Whether it's designing 
-              RESTful APIs, configuring microcontrollers, or optimizing database queries, I approach each challenge 
-              with a focus on performance and reliability.
+              I believe in writing clean, efficient code that not only works but scales. Whether it's building 
+              RESTful APIs with Express/NestJS, developing bare-metal OS kernels, or creating IoT solutions, 
+              I approach each challenge with a focus on performance and reliability.
             </p>
           </div>
 

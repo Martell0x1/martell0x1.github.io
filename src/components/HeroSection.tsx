@@ -33,16 +33,15 @@ const HeroSection = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Hi, I'm a{" "}
-              <span className="text-primary">Full Stack</span>{" "}
-              Developer
+              Hi, I'm{" "}
+              <span className="text-primary">Marwan</span>
             </h1>
             
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Specializing in <span className="text-foreground font-medium">backend development</span>,{" "}
+              Software Engineer specializing in <span className="text-foreground font-medium">backend development</span>,{" "}
               <span className="text-foreground font-medium">embedded systems</span>, and{" "}
               <span className="text-foreground font-medium">IoT solutions</span>. 
-              Passionate about Linux, systems programming, and building reliable infrastructure.
+              FCDS Student from Alexandria, Egypt. Passionate about Linux, Rust, and building reliable systems.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -59,7 +58,7 @@ const HeroSection = () => {
 
             <div className="flex items-center gap-4 pt-4">
               <a 
-                href="https://github.com" 
+                href="https://github.com/Martell0x1" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
@@ -67,7 +66,7 @@ const HeroSection = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/marawan-zein/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
@@ -75,7 +74,7 @@ const HeroSection = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="mailto:hello@example.com"
+                href="mailto:marwan@example.com"
                 className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               >
                 <Mail className="w-5 h-5" />
