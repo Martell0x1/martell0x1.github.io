@@ -5,20 +5,6 @@ import MatrixRain from "./MatrixRain";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const HeroSection = () => {
-  const terminalCommands = [
-    { type: "command" as const, text: "neofetch --name" },
-    { type: "success" as const, text: "█▀▄▀█ ▄▀█ █▀█ █░█░█ ▄▀█ █▄░█" },
-    { type: "success" as const, text: "█░▀░█ █▀█ █▀▄ ▀▄▀▄▀ █▀█ █░▀█" },
-    { type: "command" as const, text: "cat /etc/skills" },
-    { type: "info" as const, text: "├── Backend Development" },
-    { type: "info" as const, text: "├── Embedded Systems & IoT" },
-    { type: "info" as const, text: "├── Linux & Rust" },
-    { type: "info" as const, text: "└── System Architecture" },
-    { type: "command" as const, text: "echo $LOCATION" },
-    { type: "output" as const, text: "Alexandria, Egypt 🇪🇬" },
-    { type: "command" as const, text: "./start_journey.sh" },
-    { type: "success" as const, text: "✓ Ready to build something amazing!" },
-  ];
 
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
@@ -64,10 +50,11 @@ const HeroSection = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Software Engineer specializing in <span className="text-foreground font-medium">backend development</span>,{" "}
-              <span className="text-foreground font-medium">embedded systems</span>, and{" "}
+              <span className="text-foreground font-medium">Full Stack Developer</span> specializing in{" "}
+              <span className="text-foreground font-medium">backend systems</span>,{" "}
+              <span className="text-foreground font-medium">embedded development</span>, and{" "}
               <span className="text-foreground font-medium">IoT solutions</span>. 
-              FCDS Student from Alexandria, Egypt. Passionate about Linux, Rust, and building reliable systems.
+              FCDS Student from Alexandria, Egypt. Passionate about Linux, Rust, and building reliable systems from hardware to cloud.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -126,7 +113,7 @@ const HeroSection = () => {
               </div>
             </div>
             
-            <Terminal commands={terminalCommands} className="shadow-xl" />
+            <Terminal className="shadow-xl" />
           </div>
         </div>
       </div>
