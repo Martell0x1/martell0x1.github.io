@@ -10,7 +10,6 @@ interface ProjectCardProps {
   githubUrl?: string;
   liveUrl?: string;
   imageUrl?: string;
-  delay?: number;
 }
 
 const ProjectCard = ({ 
@@ -20,13 +19,9 @@ const ProjectCard = ({
   githubUrl, 
   liveUrl, 
   imageUrl,
-  delay = 0 
 }: ProjectCardProps) => {
   return (
-    <Card 
-      className="group overflow-hidden bg-card hover:shadow-lg transition-all duration-300 border-border hover:border-primary/30 opacity-0 animate-fade-in"
-      style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
-    >
+    <Card className="group overflow-hidden bg-card hover:shadow-lg transition-all duration-300 border-border hover:border-primary/30 h-full flex flex-col">
       {imageUrl && (
         <div className="aspect-video overflow-hidden bg-muted">
           <img 
@@ -41,7 +36,7 @@ const ProjectCard = ({
           {title}
         </h3>
       </CardHeader>
-      <CardContent className="space-y-3">
+      <CardContent className="space-y-3 flex-grow">
         <p className="text-muted-foreground text-sm leading-relaxed">
           {description}
         </p>
