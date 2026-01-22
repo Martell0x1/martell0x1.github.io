@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -65,10 +68,10 @@ All colors MUST be HSL.
 
     --shadow-2xs: 0 1px 3px 0px hsl(231 30% 20% / 0.03);
     --shadow-xs: 0 1px 3px 0px hsl(231 30% 20% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(231 30% 20% / 0.08), 0 1px 2px -1px hsl(231 30% 20% / 0.08);
-    --shadow: 0 1px 3px 0px hsl(231 30% 20% / 0.1), 0 1px 2px -1px hsl(231 30% 20% / 0.1);
-    --shadow-md: 0 4px 6px -1px hsl(231 30% 20% / 0.1), 0 2px 4px -2px hsl(231 30% 20% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(231 30% 20% / 0.1), 0 4px 6px -4px hsl(231 30% 20% / 0.1);
+    --shadow-sm: 0px 1px 1.5px 0px hsla(0, 0%, 0%, 0.67);
+    --shadow: 0px 1px 3px 0px hsla(0, 0%, 0%, 0.67);
+    --shadow-md: 0px 1px 4.5px 0px hsla(0, 0%, 0%, 0.67);
+    --shadow-lg: 0px 1px 7.5px 0px hsla(0, 0%, 0%, 0.67);
     --shadow-xl: 0 20px 25px -5px hsl(231 30% 20% / 0.1), 0 8px 10px -6px hsl(231 30% 20% / 0.1);
     --shadow-2xl: 0 25px 50px -12px hsl(231 30% 20% / 0.25);
 
@@ -138,10 +141,10 @@ All colors MUST be HSL.
 
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.2);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.25), 0 1px 2px -1px hsl(0 0% 0% / 0.25);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.3), 0 1px 2px -1px hsl(0 0% 0% / 0.3);
-    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
-    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -4px hsl(0 0% 0% / 0.3);
+    --shadow-sm: 0px 1px 1.5px 0px hsla(0, 0%, 0%, 0.67);
+    --shadow: 0px 1px 3px 0px hsla(0, 0%, 0%, 0.67);
+    --shadow-md: 0px 1px 4.5px 0px hsla(0, 0%, 0%, 0.67);
+    --shadow-lg: 0px 1px 7.5px 0px hsla(0, 0%, 0%, 0.67);
     --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.3), 0 8px 10px -6px hsl(0 0% 0% / 0.3);
     --shadow-2xl: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
   }
