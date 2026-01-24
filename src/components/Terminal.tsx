@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef, KeyboardEvent } from "react";
+import { useEffect, useState, useRef, KeyboardEvent, useCallback } from "react";
 
 interface CommandOutput {
   type: "command" | "output" | "error" | "success" | "info" | "path" | "ascii";
   text: string;
+  isTyping?: boolean;
 }
 
 interface TerminalProps {
@@ -118,6 +119,8 @@ const Terminal = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const [isTyping, setIsTyping] = useState(true);
+  const [typingText, setTypingText] = useState<{[key: number]: string}>({});
+  const typingRef = useRef<boolean>(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -130,29 +133,77 @@ const Terminal = ({
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
-  }, [history]);
+  }, [history, typingText]);
+
+  const typeOutput = useCallback(async (outputs: CommandOutput[], baseHistory: CommandOutput[]) => {
+    typingRef.current = true;
+    let currentHistory = [...baseHistory];
+    
+    for (let i = 0; i < outputs.length; i++) {
+      const output = outputs[i];
+      const historyIndex = currentHistory.length;
+      
+      // Add empty entry for this line
+      currentHistory = [...currentHistory, { ...output, text: "", isTyping: true }];
+      setHistory(currentHistory);
+      
+      // Type each character
+      const text = output.text;
+      const isAscii = output.type === "ascii";
+      const delay = isAscii ? 1 : 15; // Faster for ASCII art
+      
+      for (let j = 0; j <= text.length; j++) {
+        if (!typingRef.current) break;
+        setTypingText(prev => ({ ...prev, [historyIndex]: text.slice(0, j) }));
+        await new Promise(r => setTimeout(r, delay));
+      }
+      
+      // Finalize this line
+      currentHistory = currentHistory.map((item, idx) => 
+        idx === historyIndex ? { ...output, isTyping: false } : item
+      );
+      setHistory(currentHistory);
+      setTypingText(prev => {
+        const newState = { ...prev };
+        delete newState[historyIndex];
+        return newState;
+      });
+      
+      await new Promise(r => setTimeout(r, 30));
+    }
+    
+    typingRef.current = false;
+  }, []);
+
   useEffect(() => {
     const runIntro = async () => {
       const cmd = "neofetch";
 
-      // اكتب الأمر حرف حرف
+      // Type command character by character
       for (let i = 1; i <= cmd.length; i++) {
         setInput(cmd.slice(0, i));
-        await new Promise((r) => setTimeout(r, 300));
+        await new Promise((r) => setTimeout(r, 120));
       }
 
-      await new Promise((r) => setTimeout(r, 200));
+      await new Promise((r) => setTimeout(r, 300));
 
-      // نفّذ الأمر
-      handleCommand(cmd);
+      // Execute command with typing effect
+      const output = COMMANDS[cmd];
+      const baseHistory: CommandOutput[] = [
+        { type: "success", text: "Loading terminal ... Please wait." },
+        { type: "command", text: cmd },
+      ];
+      setHistory(baseHistory);
       setInput("");
+      
+      await typeOutput(output, baseHistory);
       setIsTyping(false);
     };
 
     runIntro();
-  }, []);
+  }, [typeOutput]);
 
-  const handleCommand = (cmd: string) => {
+  const handleCommand = async (cmd: string) => {
     const trimmedCmd = cmd.trim().toLowerCase();
 
     // Add command to history display
@@ -178,13 +229,19 @@ const Terminal = ({
 
     const output = COMMANDS[trimmedCmd];
     if (output) {
-      setHistory([...newHistory, ...output]);
+      setHistory(newHistory);
+      setIsTyping(true);
+      await typeOutput(output, newHistory);
+      setIsTyping(false);
     } else {
-      setHistory([
-        ...newHistory,
-        { type: "error", text: `Command not found: ${cmd}` },
-        { type: "output", text: "Type 'help' to see available commands." },
-      ]);
+      const errorOutput = [
+        { type: "error" as const, text: `Command not found: ${cmd}` },
+        { type: "output" as const, text: "Type 'help' to see available commands." },
+      ];
+      setHistory(newHistory);
+      setIsTyping(true);
+      await typeOutput(errorOutput, newHistory);
+      setIsTyping(false);
     }
 
     setCommandHistory((prev) => [...prev, trimmedCmd]);
@@ -293,7 +350,10 @@ const Terminal = ({
             <span
               className={`${getColorClass(cmd)} ${cmd.type === "ascii" ? "whitespace-pre font-bold" : ""}`}
             >
-              {cmd.text}
+              {cmd.isTyping ? (typingText[index] || "") : cmd.text}
+              {cmd.isTyping && (
+                <span className={`inline-block w-2 h-4 bg-primary ml-0.5 ${showCursor ? "opacity-100" : "opacity-0"}`} />
+              )}
             </span>
           </div>
         ))}
