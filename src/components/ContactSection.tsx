@@ -1,11 +1,24 @@
-import { Mail, Github, Linkedin, Send, MapPin } from "lucide-react";
+import { useState } from "react";
+import { Mail, Github, Linkedin, Send, MapPin, Loader2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import ScrollReveal from "./ScrollReveal";
 
 const ContactSection = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const { toast } = useToast();
+
   const contactLinks = [
     {
       icon: Github,
@@ -22,14 +35,45 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      href: "mailto:marwan@example.com",
-      username: "marwan@example.com",
+      href: "mailto:marawanzein222@gmail.com",
+      username: "marawanzein222@gmail.com",
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon!",
+      });
+
+      // Reset success state after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error: any) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   return (
@@ -109,7 +153,15 @@ const ContactSection = () => {
                       >
                         Name
                       </label>
-                      <Input id="name" placeholder="Your name" required />
+                      <Input 
+                        id="name" 
+                        placeholder="Your name" 
+                        required 
+                        value={formData.name}
+                        onChange={handleChange}
+                        maxLength={100}
+                        disabled={isSubmitting}
+                      />
                     </div>
                     <div className="space-y-2">
                       <label
@@ -123,6 +175,10 @@ const ContactSection = () => {
                         type="email"
                         placeholder="your@email.com"
                         required
+                        value={formData.email}
+                        onChange={handleChange}
+                        maxLength={255}
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -137,6 +193,10 @@ const ContactSection = () => {
                       id="subject"
                       placeholder="What's this about?"
                       required
+                      value={formData.subject}
+                      onChange={handleChange}
+                      maxLength={200}
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="space-y-2">
@@ -151,11 +211,33 @@ const ContactSection = () => {
                       placeholder="Your message..."
                       rows={5}
                       required
+                      value={formData.message}
+                      onChange={handleChange}
+                      maxLength={5000}
+                      disabled={isSubmitting}
                     />
                   </div>
-                  <Button type="submit" className="w-full gap-2">
-                    <Send className="w-4 h-4" />
-                    Send Message
+                  <Button 
+                    type="submit" 
+                    className="w-full gap-2" 
+                    disabled={isSubmitting || isSubmitted}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : isSubmitted ? (
+                      <>
+                        <CheckCircle className="w-4 h-4" />
+                        Message Sent!
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
