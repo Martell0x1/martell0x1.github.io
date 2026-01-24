@@ -26,9 +26,9 @@ const HeroSection = () => {
             className="space-y-6 opacity-0 animate-fade-in"
             style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent text-accent-foreground text-sm font-medium">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Available for opportunities
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-orange-400/30 text-sm font-medium">
+              <span className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_6px_#FFA500] animate-pulse" />
+              <span className="text-orange-400">Available for opportunities</span>
             </div>
 
             {/* Profile Photo - Mobile */}
