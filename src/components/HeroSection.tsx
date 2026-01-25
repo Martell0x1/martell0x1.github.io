@@ -1,10 +1,13 @@
-import { ArrowDown, Github, Linkedin, Mail, Youtube } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Youtube, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Terminal from "./Terminal";
 import MatrixRain from "./MatrixRain";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import { usePageViews } from "@/hooks/use-page-views";
 
 const HeroSection = () => {
+  const { viewCount, isLoading } = usePageViews("home");
+
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
       {/* Matrix Rain Background */}
@@ -26,9 +29,18 @@ const HeroSection = () => {
             className="space-y-6 opacity-0 animate-fade-in"
             style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-orange-400/30 text-sm font-medium">
-              <span className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_6px_#FFA500] animate-pulse" />
-              <span className="text-orange-400">Available for opportunities</span>
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-primary/30 text-sm font-medium">
+                <span className="w-2 h-2 rounded-full bg-primary shadow-glow animate-pulse" />
+                <span className="text-primary">Available for opportunities</span>
+              </div>
+              
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-border/50 text-sm font-medium text-muted-foreground">
+                <Eye className="w-4 h-4" />
+                <span>
+                  {isLoading ? "..." : viewCount?.toLocaleString() ?? "0"} views
+                </span>
+              </div>
             </div>
 
             {/* Profile Photo - Mobile */}
