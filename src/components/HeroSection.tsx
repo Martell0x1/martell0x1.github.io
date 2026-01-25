@@ -30,9 +30,9 @@ const HeroSection = () => {
             style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
           >
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-primary/30 text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-primary shadow-glow animate-pulse" />
-                <span className="text-primary">Available for opportunities</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-orange-400/50 text-sm font-medium shadow-[0_0_15px_rgba(251,146,60,0.3)] hover:shadow-[0_0_25px_rgba(251,146,60,0.5)] transition-shadow duration-300">
+                <span className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_8px_#fb923c,0_0_16px_#fb923c] animate-pulse" />
+                <span className="text-orange-400 drop-shadow-[0_0_8px_rgba(251,146,60,0.8)]">Available for opportunities</span>
               </div>
               
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-border/50 text-sm font-medium text-muted-foreground">
