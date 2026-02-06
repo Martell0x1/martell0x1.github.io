@@ -67,15 +67,21 @@ const HeroSection = () => {
               <span className="text-foreground font-medium">
                 Full Stack Developer
               </span>{" "}
-              specializing in{" "}
+              with expertise in{" "}
               <span className="text-foreground font-medium">
-                backend systems
+                Angular
               </span>
               ,{" "}
               <span className="text-foreground font-medium">
-                embedded development
+                .NET
               </span>
               , and{" "}
+              <span className="text-foreground font-medium">Node.js</span>
+              . Also specializing in{" "}
+              <span className="text-foreground font-medium">
+                embedded development
+              </span>
+              {" "}and{" "}
               <span className="text-foreground font-medium">IoT solutions</span>
               . FCDS Student from Alexandria, Egypt. Passionate about Linux,
               Rust, and building reliable systems from hardware to cloud.
