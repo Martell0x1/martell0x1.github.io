@@ -4,6 +4,13 @@ import ScrollReveal from "./ScrollReveal";
 const ProjectsSection = () => {
   const projects = [
     {
+      title: "Monitex",
+      description:
+        "An enterprise-grade, event-driven IoT monitoring & anomaly detection suite leveraging MQTT, AMQP, SignalR, and ML for real-time sensor data orchestration and predictive analytics.",
+      tags: ["Angular", ".NET", "Rust", "ESP32", "RabbitMQ", "MQTT", "Python", "ML"],
+      githubUrl: "https://github.com/Martell0x1/Monitex",
+    },
+    {
       title: "Rusty x86-64 OS Kernel",
       description:
         "A bare-metal Rust operating system kernel for x86_64 with VGA output, interrupts, paging, hardware support, and custom memory allocators.",
