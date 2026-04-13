@@ -1,5 +1,11 @@
 import ProjectCard from "./ProjectCard";
 import ScrollReveal from "./ScrollReveal";
+import monitexArch from "@/assets/rusty-kernel-preview.jpg";
+import ledController from "@/assets/led-controller-preview.jpg";
+import awsFilesharing from "@/assets/aws-filesharing-preview.jpg";
+import expressApi from "@/assets/express-api-preview.jpg";
+import rustyTasks from "@/assets/rusty-tasks-preview.jpg";
+import rustyKernel from "@/assets/rusty-kernel-preview.jpg";
 
 const ProjectsSection = () => {
   const projects = [
@@ -9,6 +15,15 @@ const ProjectsSection = () => {
         "An enterprise-grade, event-driven IoT monitoring & anomaly detection suite leveraging MQTT, AMQP, SignalR, and ML for real-time sensor data orchestration and predictive analytics.",
       tags: ["Angular", ".NET", "Rust", "ESP32", "RabbitMQ", "MQTT", "Python", "ML"],
       githubUrl: "https://github.com/Martell0x1/Monitex",
+      imageUrl: "https://raw.githubusercontent.com/Martell0x1/Monitex/master/assets/arch.png",
+    },
+    {
+      title: "VisionGate",
+      description:
+        "Smart IoT Garage System with AI/ML integration for intelligent access control and automation using Flutter and embedded systems.",
+      tags: ["Dart", "Flutter", "IoT", "AI/ML", "ESP32"],
+      githubUrl: "https://github.com/Martell0x1/VisionGate",
+      imageUrl: "https://raw.githubusercontent.com/Martell0x1/VisionGate/master/assets/system.jpeg",
     },
     {
       title: "Rusty x86-64 OS Kernel",
@@ -22,13 +37,7 @@ const ProjectsSection = () => {
         "Systems Programming",
       ],
       githubUrl: "https://github.com/Martell0x1/rusty-x86-64",
-    },
-    {
-      title: "VisionGate",
-      description:
-        "Smart IoT Garage System with AI/ML integration for intelligent access control and automation using Flutter and embedded systems.",
-      tags: ["Dart", "Flutter", "IoT", "AI/ML", "ESP32"],
-      githubUrl: "https://github.com/Martell0x1/VisionGate",
+      imageUrl: rustyKernel,
     },
     {
       title: "Rusty Tasks",
@@ -36,6 +45,7 @@ const ProjectsSection = () => {
         "A lightweight CLI task manager built in Rust with color-coded statuses, UUIDs for unique identification, and table-based rendering.",
       tags: ["Rust", "CLI", "Task Manager", "Terminal"],
       githubUrl: "https://github.com/Martell0x1/rusty-tasks",
+      imageUrl: rustyTasks,
     },
     {
       title: "LED Controller ESP32",
@@ -43,6 +53,7 @@ const ProjectsSection = () => {
         "Minimal web application to toggle LED on/off via ESP32 microcontroller with embedded web server and WiFi connectivity.",
       tags: ["C++", "ESP32", "IoT", "Embedded", "Web Server"],
       githubUrl: "https://github.com/Martell0x1/LED-Controller-ESP32",
+      imageUrl: ledController,
     },
     {
       title: "File Sharing App (AWS)",
@@ -50,6 +61,7 @@ const ProjectsSection = () => {
         "Simple File Sharing Web Application integrated with AWS services including S3 for storage and Lambda for serverless processing.",
       tags: ["HTML", "AWS", "S3", "Lambda", "Cloud"],
       githubUrl: "https://github.com/Martell0x1/File-Sharing-Application-AWS",
+      imageUrl: awsFilesharing,
     },
     {
       title: "Express.js RESTful API",
@@ -58,6 +70,7 @@ const ProjectsSection = () => {
       tags: ["Node.js", "Express", "MongoDB", "REST API", "Auth"],
       githubUrl:
         "https://github.com/Martell0x1/ExpressJs-Basic-RestfullAPI-Project",
+      imageUrl: expressApi,
     },
   ];
 
