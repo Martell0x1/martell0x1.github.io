@@ -1,8 +1,8 @@
 import { ArrowDown, Github, Linkedin, Mail, Youtube, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Terminal from "./Terminal";
-import ParticleNetwork from "./ParticleNetwork";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import heroBgVideo from "@/assets/hero-bg.mp4.asset.json";
 import { usePageViews } from "@/hooks/use-page-views";
 
 const HeroSection = () => {
@@ -10,8 +10,19 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
-      {/* Animated Particle Network Background */}
-      <ParticleNetwork />
+      {/* Animated Video Background */}
+      <video
+        src={heroBgVideo.url}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        style={{ zIndex: 0 }}
+      />
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-background/60" style={{ zIndex: 0 }} />
 
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--accent))_0%,transparent_50%)] opacity-50" />
