@@ -1,7 +1,7 @@
 import { ArrowDown, Github, Linkedin, Mail, Youtube, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Terminal from "./Terminal";
-import MatrixRain from "./MatrixRain";
+import ParticleNetwork from "./ParticleNetwork";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { usePageViews } from "@/hooks/use-page-views";
 
@@ -10,8 +10,8 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
-      {/* Matrix Rain Background */}
-      <MatrixRain />
+      {/* Animated Particle Network Background */}
+      <ParticleNetwork />
 
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--accent))_0%,transparent_50%)] opacity-50" />
