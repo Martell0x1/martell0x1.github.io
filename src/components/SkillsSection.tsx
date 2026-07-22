@@ -1,44 +1,43 @@
-import { Server, Cpu, Terminal, Database, Cloud, Wrench } from "lucide-react";
+import { Code2, Layers, Database, Brain } from "lucide-react";
 import SkillCard from "./SkillCard";
 import ScrollReveal from "./ScrollReveal";
 
 const SkillsSection = () => {
   const skills = [
     {
-      icon: Server,
-      title: "Backend Development",
-      description: "Building robust APIs and microservices with a focus on performance, scalability, and clean architecture.",
-      technologies: ["Node.js", "Python", "Go", "REST", "GraphQL", "gRPC"],
+      icon: Code2,
+      title: "Languages",
+      description: "Proficient across systems, backend, and web languages.",
+      technologies: ["C++", "Java", "Python", "JavaScript/Node.js", "Rust", "PHP", "HTML/CSS"],
     },
     {
-      icon: Cpu,
-      title: "Embedded & IoT",
-      description: "Developing firmware and IoT solutions for embedded systems, sensors, and connected devices.",
-      technologies: ["C/C++", "Arduino", "ESP32", "Raspberry Pi", "MQTT", "Bluetooth"],
-    },
-    {
-      icon: Terminal,
-      title: "Linux & Systems",
-      description: "Deep experience with Linux internals, shell scripting, and systems administration.",
-      technologies: ["Linux", "Bash", "Systemd", "Kernel", "Networking", "Security"],
+      icon: Layers,
+      title: "Frameworks",
+      description: "Full stack frameworks for building scalable web and API services.",
+      technologies: ["Laravel", "NestJS", "Express.js", "Angular", ".NET/ASP.NET Core"],
     },
     {
       icon: Database,
-      title: "Databases",
-      description: "Designing and optimizing database schemas for both relational and NoSQL databases.",
-      technologies: ["PostgreSQL", "MongoDB", "Redis", "SQLite", "TimescaleDB"],
+      title: "Data & Infrastructure",
+      description: "Databases, message brokers, and cloud infrastructure for distributed systems.",
+      technologies: [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "Redis",
+        "Kafka",
+        "RabbitMQ",
+        "Docker",
+        "AWS (EC2/S3/IAM/VPC)",
+        "Azure",
+        "Linux",
+      ],
     },
     {
-      icon: Cloud,
-      title: "DevOps & Cloud",
-      description: "Deploying and managing applications with modern CI/CD pipelines and cloud infrastructure.",
-      technologies: ["Docker", "Kubernetes", "AWS", "GitHub Actions", "Terraform"],
-    },
-    {
-      icon: Wrench,
-      title: "Tools & Practices",
-      description: "Following best practices with version control, testing, and documentation.",
-      technologies: ["Git", "Jest", "Pytest", "Swagger", "Markdown", "Agile"],
+      icon: Brain,
+      title: "Core Concepts",
+      description: "Software design and engineering fundamentals I apply in every project.",
+      technologies: ["OOP", "MVC", "Microservices", "REST APIs", "Auth", "OWASP Top 10"],
     },
   ];
 
@@ -51,18 +50,14 @@ const SkillsSection = () => {
               Technical <span className="text-primary">Skills</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A comprehensive toolkit built over years of hands-on experience with various technologies and paradigms.
+              The stack I use to build reliable backends, distributed systems, and low-level software.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {skills.map((skill, index) => (
-            <ScrollReveal 
-              key={skill.title}
-              animation="fade-up"
-              delay={index * 100}
-            >
+            <ScrollReveal key={skill.title} animation="fade-up" delay={index * 100}>
               <SkillCard {...skill} />
             </ScrollReveal>
           ))}
