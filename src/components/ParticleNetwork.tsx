@@ -18,13 +18,8 @@ const ParticleNetwork = () => {
     };
     window.addEventListener("resize", resize);
 
-    // Read theme color from CSS variable (HSL components)
-    const getPrimary = () => {
-      const v = getComputedStyle(document.documentElement)
-        .getPropertyValue("--primary")
-        .trim();
-      return v || "346 82% 55%";
-    };
+    // Warm amber/orange particle color that complements the crimson theme
+    const getPrimary = () => "25 95% 60%";
     let primary = getPrimary();
 
     const mouse = { x: -9999, y: -9999 };

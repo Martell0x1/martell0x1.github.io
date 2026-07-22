@@ -14,13 +14,13 @@ interface Education {
 
 const EDUCATION: Education[] = [
   {
-    degree: "Bachelor of Computer Science",
+    degree: "B.Sc. Computer Science – Software Engineering & Data Science",
     institution: "Faculty of Computers & Data Science (FCDS), Alexandria University",
-    year: "2023 - 2027",
+    year: "Expected May 2027",
     location: "Alexandria, Egypt",
     status: "In Progress",
     description:
-      "Focused on software engineering, systems programming, and IoT projects.",
+      "Relevant coursework: Data Structures & Algorithms, Machine Learning, AI, OOP, Statistics, Linear Algebra.",
   },
 ];
 

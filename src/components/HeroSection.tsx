@@ -1,8 +1,9 @@
 import { ArrowDown, Github, Linkedin, Mail, Youtube, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Terminal from "./Terminal";
+import ParticleNetwork from "./ParticleNetwork";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import heroBgVideo from "@/assets/hero-bg.mp4.asset.json";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 import { usePageViews } from "@/hooks/use-page-views";
 
 const HeroSection = () => {
@@ -10,19 +11,10 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
-      {/* Animated Video Background */}
-      <video
-        src={heroBgVideo.url}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
-        style={{ zIndex: 0 }}
-      />
+      {/* Animated Particle Network Background */}
+      <ParticleNetwork />
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/60" style={{ zIndex: 0 }} />
+      <div className="absolute inset-0 bg-background/40" style={{ zIndex: 0 }} />
 
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--accent))_0%,transparent_50%)] opacity-50" />
@@ -32,6 +24,7 @@ const HeroSection = () => {
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
+
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -109,7 +102,7 @@ const HeroSection = () => {
                 <a href="#contact">Get in Touch</a>
               </Button>
               <Button size="lg" className="gap-2" asChild>
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                <a href={resumeAsset.url} target="_blank" rel="noopener noreferrer">
                   Download Resume
                 </a>
               </Button>
