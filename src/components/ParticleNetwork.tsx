@@ -125,7 +125,7 @@ const ParticleNetwork = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none opacity-45"
+      className="absolute inset-0 pointer-events-none opacity-55"
       style={{ zIndex: 1 }}
       aria-hidden
     />

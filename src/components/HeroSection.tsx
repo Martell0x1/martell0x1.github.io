@@ -22,7 +22,7 @@ const HeroSection = () => {
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,hsl(198_50%_88%/0.7)_0%,transparent_48%),radial-gradient(ellipse_at_90%_85%,hsl(38_40%_90%/0.55)_0%,transparent_50%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,hsl(198_40%_28%/0.35)_0%,transparent_48%),radial-gradient(ellipse_at_90%_85%,hsl(38_30%_22%/0.28)_0%,transparent_50%)]"
         style={{ zIndex: 0 }}
         aria-hidden
       />

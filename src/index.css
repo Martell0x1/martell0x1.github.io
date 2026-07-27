@@ -5,54 +5,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Soft Ocean — mist blue → soft sand with teal accent. All colors HSL. */
+/* Soft Ocean lives in .dark — deep mist blue → soft sand with teal. All colors HSL. */
 
 @layer base {
+  /* Neutral light fallback (not Soft Ocean) */
   :root {
-    --background: 200 28% 96%;
-    --foreground: 210 28% 16%;
+    --background: 210 20% 98%;
+    --foreground: 210 25% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 28% 16%;
+    --card-foreground: 210 25% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 28% 16%;
+    --popover-foreground: 210 25% 16%;
 
-    --primary: 174 45% 36%;
+    --primary: 210 15% 30%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 198 30% 90%;
-    --secondary-foreground: 200 30% 22%;
+    --secondary: 210 14% 92%;
+    --secondary-foreground: 210 20% 24%;
 
-    --muted: 200 22% 93%;
-    --muted-foreground: 205 12% 42%;
+    --muted: 210 14% 94%;
+    --muted-foreground: 210 10% 42%;
 
-    --accent: 38 40% 92%;
-    --accent-foreground: 210 25% 24%;
+    --accent: 210 14% 92%;
+    --accent-foreground: 210 20% 24%;
 
     --destructive: 0 68% 48%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 18% 86%;
-    --input: 200 18% 86%;
-    --ring: 174 45% 36%;
+    --border: 210 14% 88%;
+    --input: 210 14% 88%;
+    --ring: 210 15% 30%;
 
     --radius: 0.85rem;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 210 28% 16%;
-    --sidebar-primary: 174 45% 36%;
+    --sidebar-foreground: 210 25% 16%;
+    --sidebar-primary: 210 15% 30%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 38 40% 92%;
-    --sidebar-accent-foreground: 210 25% 24%;
-    --sidebar-border: 200 18% 86%;
-    --sidebar-ring: 174 45% 36%;
+    --sidebar-accent: 210 14% 92%;
+    --sidebar-accent-foreground: 210 20% 24%;
+    --sidebar-border: 210 14% 88%;
+    --sidebar-ring: 210 15% 30%;
 
-    --chart-1: 174 45% 36%;
-    --chart-2: 200 45% 45%;
-    --chart-3: 38 55% 50%;
-    --chart-4: 160 30% 40%;
-    --chart-5: 220 35% 48%;
+    --chart-1: 210 15% 30%;
+    --chart-2: 200 35% 45%;
+    --chart-3: 38 45% 50%;
+    --chart-4: 160 25% 40%;
+    --chart-5: 220 30% 48%;
 
     --sidebar: 0 0% 100%;
 
@@ -60,126 +61,109 @@
     --font-serif: 'Merriweather', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
-    --shadow-2xs: 0 1px 3px 0px hsl(210 28% 16% / 0.03);
-    --shadow-xs: 0 1px 3px 0px hsl(210 28% 16% / 0.05);
-    --shadow-sm: 0 2px 8px 0px hsl(210 28% 16% / 0.06);
-    --shadow: 0 4px 14px 0px hsl(210 28% 16% / 0.07);
-    --shadow-md: 0 8px 20px 0px hsl(210 28% 16% / 0.08);
-    --shadow-lg: 0 12px 28px 0px hsl(210 28% 16% / 0.1);
-    --shadow-xl: 0 20px 40px -8px hsl(210 28% 16% / 0.12);
-    --shadow-2xl: 0 28px 56px -12px hsl(210 28% 16% / 0.18);
+    --shadow-2xs: 0 1px 3px 0px hsl(210 25% 16% / 0.03);
+    --shadow-xs: 0 1px 3px 0px hsl(210 25% 16% / 0.05);
+    --shadow-sm: 0 2px 8px 0px hsl(210 25% 16% / 0.06);
+    --shadow: 0 4px 14px 0px hsl(210 25% 16% / 0.07);
+    --shadow-md: 0 8px 20px 0px hsl(210 25% 16% / 0.08);
+    --shadow-lg: 0 12px 28px 0px hsl(210 25% 16% / 0.1);
+    --shadow-xl: 0 20px 40px -8px hsl(210 25% 16% / 0.12);
+    --shadow-2xl: 0 28px 56px -12px hsl(210 25% 16% / 0.18);
 
     --tracking-normal: 0em;
     --spacing: 0.25rem;
 
-    --terminal-bg: 210 28% 12%;
-    --terminal-text: 174 40% 62%;
-    --terminal-cursor: 174 45% 45%;
+    --terminal-bg: 210 20% 12%;
+    --terminal-text: 160 25% 55%;
+    --terminal-cursor: 210 15% 40%;
 
-    /* Mist blue → soft sand */
-    --gradient-page: linear-gradient(
-      165deg,
-      hsl(200 40% 94%) 0%,
-      hsl(195 32% 95%) 30%,
-      hsl(40 28% 95%) 65%,
-      hsl(36 32% 94%) 100%
-    );
-    --gradient-hero: linear-gradient(
-      145deg,
-      hsl(198 45% 90%) 0%,
-      hsl(185 35% 90%) 32%,
-      hsl(170 30% 91%) 58%,
-      hsl(38 35% 92%) 100%
-    );
-    --gradient-card: linear-gradient(
-      165deg,
-      hsl(0 0% 100%) 0%,
-      hsl(198 30% 98%) 100%
-    );
-    --gradient-section: linear-gradient(
-      180deg,
-      hsl(198 35% 94% / 0.6) 0%,
-      hsl(40 28% 95% / 0.4) 100%
-    );
+    --gradient-page: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 16% 96%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(210 18% 97%) 0%, hsl(210 16% 95%) 100%);
+    --gradient-card: linear-gradient(165deg, hsl(0 0% 100%) 0%, hsl(210 16% 98%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(210 16% 96% / 0.6) 0%, hsl(210 14% 95% / 0.4) 100%);
   }
 
+  /* Soft Ocean — dark mode */
   .dark {
-    --background: 210 22% 10%;
-    --foreground: 200 20% 92%;
+    --background: 205 28% 9%;
+    --foreground: 195 25% 92%;
 
-    --card: 210 20% 13%;
-    --card-foreground: 200 20% 92%;
+    --card: 205 24% 12%;
+    --card-foreground: 195 25% 92%;
 
-    --popover: 210 20% 13%;
-    --popover-foreground: 200 20% 92%;
+    --popover: 205 24% 12%;
+    --popover-foreground: 195 25% 92%;
 
-    --primary: 174 48% 48%;
-    --primary-foreground: 210 28% 8%;
+    --primary: 174 45% 36%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 18% 18%;
-    --secondary-foreground: 198 20% 85%;
+    --secondary: 200 22% 16%;
+    --secondary-foreground: 195 20% 85%;
 
-    --muted: 210 16% 16%;
-    --muted-foreground: 200 12% 58%;
+    --muted: 205 20% 14%;
+    --muted-foreground: 200 12% 62%;
 
-    --accent: 38 25% 18%;
-    --accent-foreground: 38 45% 72%;
+    --accent: 38 22% 16%;
+    --accent-foreground: 38 40% 72%;
 
     --destructive: 0 68% 52%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 16% 20%;
-    --input: 210 16% 20%;
-    --ring: 174 48% 48%;
+    --border: 200 18% 18%;
+    --input: 200 18% 18%;
+    --ring: 174 45% 36%;
 
-    --sidebar-background: 210 22% 8%;
-    --sidebar-foreground: 200 20% 92%;
-    --sidebar-primary: 174 48% 48%;
-    --sidebar-primary-foreground: 210 28% 8%;
-    --sidebar-accent: 38 25% 18%;
-    --sidebar-accent-foreground: 38 45% 72%;
-    --sidebar-border: 210 16% 20%;
-    --sidebar-ring: 174 48% 48%;
+    --sidebar-background: 205 28% 7%;
+    --sidebar-foreground: 195 25% 92%;
+    --sidebar-primary: 174 45% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 38 22% 16%;
+    --sidebar-accent-foreground: 38 40% 72%;
+    --sidebar-border: 200 18% 18%;
+    --sidebar-ring: 174 45% 36%;
 
-    --chart-1: 174 48% 48%;
-    --chart-2: 200 45% 50%;
-    --chart-3: 38 55% 55%;
+    --chart-1: 174 45% 36%;
+    --chart-2: 200 40% 50%;
+    --chart-3: 38 45% 55%;
     --chart-4: 160 30% 45%;
     --chart-5: 220 35% 55%;
 
-    --sidebar: 210 20% 13%;
+    --sidebar: 205 24% 12%;
 
-    --terminal-bg: 210 25% 7%;
+    --terminal-bg: 210 30% 6%;
     --terminal-text: 174 40% 58%;
-    --terminal-cursor: 174 48% 50%;
+    --terminal-cursor: 174 45% 42%;
 
+    /* Deep mist blue → soft sand (dark) */
     --gradient-page: linear-gradient(
       165deg,
-      hsl(210 24% 11%) 0%,
-      hsl(200 20% 10%) 40%,
-      hsl(35 12% 11%) 100%
+      hsl(205 32% 10%) 0%,
+      hsl(198 28% 9%) 32%,
+      hsl(185 22% 9%) 62%,
+      hsl(35 16% 10%) 100%
     );
     --gradient-hero: linear-gradient(
       145deg,
-      hsl(200 26% 14%) 0%,
-      hsl(185 22% 12%) 40%,
-      hsl(38 16% 12%) 100%
+      hsl(200 34% 13%) 0%,
+      hsl(185 28% 11%) 35%,
+      hsl(174 22% 10%) 65%,
+      hsl(38 18% 11%) 100%
     );
     --gradient-card: linear-gradient(
       165deg,
-      hsl(210 20% 15%) 0%,
-      hsl(210 20% 12%) 100%
+      hsl(205 24% 14%) 0%,
+      hsl(205 22% 11%) 100%
     );
     --gradient-section: linear-gradient(
       180deg,
-      hsl(200 22% 12% / 0.65) 0%,
-      hsl(38 14% 11% / 0.4) 100%
+      hsl(200 28% 11% / 0.7) 0%,
+      hsl(38 16% 10% / 0.4) 100%
     );
 
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.2);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-    --shadow-sm: 0 2px 8px 0px hsl(0 0% 0% / 0.3);
-    --shadow: 0 4px 14px 0px hsl(0 0% 0% / 0.35);
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.22);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.28);
+    --shadow-sm: 0 2px 8px 0px hsl(0 0% 0% / 0.32);
+    --shadow: 0 4px 14px 0px hsl(0 0% 0% / 0.36);
     --shadow-md: 0 8px 20px 0px hsl(0 0% 0% / 0.4);
     --shadow-lg: 0 12px 28px 0px hsl(0 0% 0% / 0.45);
     --shadow-xl: 0 20px 40px -8px hsl(0 0% 0% / 0.5);
@@ -195,7 +179,10 @@
   html {
     background: var(--gradient-page);
     background-attachment: fixed;
-    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
