@@ -17,14 +17,16 @@ const EXPERIENCES: Experience[] = [
   {
     role: "Backend Engineering Intern",
     company: "Dice Marketing & Advertising",
+    companyLogo: "../assets/dice.png", // Replace with your logo path
     project: "Spread Social Platform",
-    period: "May 2026 – Present",
-    location: "Remote",
-    status: "Current",
+    period: "May 2026 – August 2026",
+    location: "Hybrid",
+    status: "Completed",
     bullets: [
-      "Contributed to Spread Social, a large-scale social media management and analytics platform, improving backend reliability and event-processing performance.",
-      "Built and maintained APIs and event-driven workflows handling high-volume asynchronous analytics and publishing data.",
-      "Collaborated with engineers on distributed backend infrastructure, caching, and queue-based processing.",
+      "Engineered 40+ production REST APIs across analytics, competitor intelligence, scheduling, authentication, and media management for a large-scale social media management platform.",
+      "Architected a competitor intelligence pipeline spanning 7 social networks with 30+ scraping consumers, collecting and normalizing 200+ engagement metrics into MongoDB and ClickHouse for analytics.",
+      "Built distributed asynchronous workflows using Laravel Queues, Redis, Horizon, WebSockets, Ayrshare, and Apify, enabling scalable background processing, caching, rate limiting, and real-time event delivery.",
+      "Optimized a production scheduler executing 2,000+ background jobs every 30 minutes, improving worker throughput, reducing redundant processing, and increasing infrastructure resource utilization."
     ],
   },
 ];
