@@ -3,6 +3,8 @@ import ScrollReveal from "./ScrollReveal";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 
+import diceLogo from "@/assets/dice.png";
+
 interface Experience {
   role: string;
   company: string;
@@ -17,7 +19,7 @@ const EXPERIENCES: Experience[] = [
   {
     role: "Backend Engineering Intern",
     company: "Dice Marketing & Advertising",
-    companyLogo: "../assets/dice.png", // Replace with your logo path
+    companyLogo: diceLogo,
     project: "Spread Social Platform",
     period: "May 2026 – August 2026",
     location: "Hybrid",
