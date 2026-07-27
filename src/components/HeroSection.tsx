@@ -22,7 +22,7 @@ const HeroSection = () => {
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,hsl(198_40%_28%/0.35)_0%,transparent_48%),radial-gradient(ellipse_at_90%_85%,hsl(38_30%_22%/0.28)_0%,transparent_50%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,hsl(198_45%_40%/0.4)_0%,transparent_48%),radial-gradient(ellipse_at_90%_85%,hsl(38_35%_32%/0.32)_0%,transparent_50%)]"
         style={{ zIndex: 0 }}
         aria-hidden
       />
@@ -86,10 +86,12 @@ const HeroSection = () => {
               Rust, and building reliable systems from hardware to cloud.
             </p>
 
-            <p className="text-sm md:text-base text-foreground/90 max-w-lg leading-relaxed border-l-2 border-primary/50 pl-4">
-              <span className="font-medium text-primary">Looking for:</span>{" "}
-              Backend / systems roles and internships — remote or hybrid. Keen
-              on APIs, queues, data pipelines, and IoT platforms.
+            <p className="text-sm md:text-base text-foreground max-w-lg leading-relaxed rounded-xl border border-primary/40 bg-card/80 backdrop-blur-sm px-4 py-3 shadow-glow">
+              <span className="font-semibold text-primary">Looking for:</span>{" "}
+              <span className="text-foreground/95">
+                Backend / systems roles and internships — remote or hybrid. Keen
+                on APIs, queues, data pipelines, and IoT platforms.
+              </span>
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -174,12 +176,12 @@ const HeroSection = () => {
             {IMPACT_STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-border/60 bg-card/60 backdrop-blur-sm px-5 py-4 text-center"
+                className="rounded-2xl border border-primary/35 bg-card/85 backdrop-blur-md px-5 py-5 text-center shadow-glow"
               >
-                <p className="text-2xl md:text-3xl font-bold text-primary tracking-tight">
+                <p className="text-3xl md:text-4xl font-bold text-primary tracking-tight drop-shadow-[0_0_12px_hsl(var(--primary)/0.45)]">
                   {stat.value}
                 </p>
-                <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+                <p className="text-sm text-foreground/80 mt-1.5 font-medium">{stat.label}</p>
               </div>
             ))}
           </div>

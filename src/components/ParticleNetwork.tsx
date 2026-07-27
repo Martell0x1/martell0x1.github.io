@@ -32,13 +32,21 @@ const ParticleNetwork = () => {
     const ro = new ResizeObserver(resize);
     ro.observe(parent);
 
-    const getPrimary = () => {
+    // Brighter particle tint for dark Soft Ocean readability
+    const getParticleColor = () => {
       const v = getComputedStyle(document.documentElement)
         .getPropertyValue("--primary")
         .trim();
-      return v || "174 45% 36%";
+      if (!v) return "174 55% 62%";
+      const parts = v.split(/\s+/);
+      if (parts.length >= 3) {
+        const h = parts[0];
+        const s = parts[1];
+        return `${h} ${s} 62%`;
+      }
+      return "174 55% 62%";
     };
-    let primary = getPrimary();
+    let primary = getParticleColor();
 
     const mouse = { x: -9999, y: -9999 };
     const onMove = (e: MouseEvent) => {
@@ -54,21 +62,21 @@ const ParticleNetwork = () => {
     window.addEventListener("mouseleave", onLeave);
 
     type P = { x: number; y: number; vx: number; vy: number; r: number };
-    const count = Math.min(110, Math.floor((width * height) / 14000));
+    const count = Math.min(120, Math.floor((width * height) / 12000));
     const particles: P[] = Array.from({ length: count }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * 0.45,
       vy: (Math.random() - 0.5) * 0.45,
-      r: Math.random() * 1.8 + 0.6,
+      r: Math.random() * 2.2 + 0.9,
     }));
 
-    const maxDist = 140;
+    const maxDist = 150;
     let raf = 0;
 
     const tick = () => {
       ctx.clearRect(0, 0, width, height);
-      primary = getPrimary();
+      primary = getParticleColor();
 
       for (const p of particles) {
         p.x += p.vx;
@@ -87,7 +95,7 @@ const ParticleNetwork = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${primary}, 0.9)`;
+        ctx.fillStyle = `hsla(${primary}, 0.95)`;
         ctx.fill();
       }
 
@@ -99,9 +107,9 @@ const ParticleNetwork = () => {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.4;
+            const alpha = (1 - dist / maxDist) * 0.55;
             ctx.strokeStyle = `hsla(${primary}, ${alpha})`;
-            ctx.lineWidth = 0.7;
+            ctx.lineWidth = 0.85;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -125,7 +133,7 @@ const ParticleNetwork = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none opacity-55"
+      className="absolute inset-0 pointer-events-none opacity-75"
       style={{ zIndex: 1 }}
       aria-hidden
     />

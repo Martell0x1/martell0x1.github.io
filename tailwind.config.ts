@@ -118,10 +118,10 @@ export default {
   			},
 			glow: {
 				'0%, 100%': {
-					boxShadow: '0 0 20px hsl(174 45% 36% / 0.28)'
+					boxShadow: '0 0 20px hsl(174 48% 46% / 0.3)'
 				},
 				'50%': {
-					boxShadow: '0 0 38px hsl(174 45% 36% / 0.45)'
+					boxShadow: '0 0 40px hsl(174 48% 46% / 0.5)'
 				}
 			},
   			'matrix-rain': {
@@ -189,8 +189,8 @@ export default {
   			lg: 'var(--shadow-lg)',
   			xl: 'var(--shadow-xl)',
   			'2xl': 'var(--shadow-2xl)',
-			glow: '0 0 28px hsl(174 45% 36% / 0.35)',
-			'glow-lg': '0 0 48px hsl(174 45% 36% / 0.45)'
+			glow: '0 0 28px hsl(174 48% 46% / 0.38)',
+			'glow-lg': '0 0 48px hsl(174 48% 46% / 0.48)'
 		},
   		fontFamily: {
   			sans: [
