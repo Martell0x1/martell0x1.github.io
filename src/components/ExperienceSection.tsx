@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 
-import diceLogo from "@/assets/dice.png";
+import {diceLogo} from "@/assets/dice.png";
 
 interface Experience {
   role: string;
