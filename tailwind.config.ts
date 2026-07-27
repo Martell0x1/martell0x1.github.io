@@ -116,14 +116,14 @@ export default {
   					transform: 'translateX(0)'
   				}
   			},
-  			glow: {
-  				'0%, 100%': {
-  					boxShadow: '0 0 20px hsl(346 82% 55% / 0.3)'
-  				},
-  				'50%': {
-  					boxShadow: '0 0 40px hsl(346 82% 55% / 0.5)'
-  				}
-  			},
+			glow: {
+				'0%, 100%': {
+					boxShadow: '0 0 20px hsl(174 45% 36% / 0.22)'
+				},
+				'50%': {
+					boxShadow: '0 0 36px hsl(174 45% 36% / 0.38)'
+				}
+			},
   			'matrix-rain': {
   				'0%': {
   					transform: 'translateY(-100%)',
@@ -189,9 +189,9 @@ export default {
   			lg: 'var(--shadow-lg)',
   			xl: 'var(--shadow-xl)',
   			'2xl': 'var(--shadow-2xl)',
-  			glow: '0 0 30px hsl(346 82% 55% / 0.3)',
-  			'glow-lg': '0 0 50px hsl(346 82% 55% / 0.4)'
-  		},
+			glow: '0 0 28px hsl(174 45% 36% / 0.26)',
+			'glow-lg': '0 0 48px hsl(174 45% 36% / 0.36)'
+		},
   		fontFamily: {
   			sans: [
   				'Poppins',
@@ -224,10 +224,12 @@ export default {
   				'monospace'
   			]
   		},
-  		backgroundImage: {
-  			'gradient-hero': 'var(--gradient-hero)',
-  			'gradient-card': 'var(--gradient-card)'
-  		}
+		backgroundImage: {
+			'gradient-hero': 'var(--gradient-hero)',
+			'gradient-card': 'var(--gradient-card)',
+			'gradient-page': 'var(--gradient-page)',
+			'gradient-section': 'var(--gradient-section)'
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

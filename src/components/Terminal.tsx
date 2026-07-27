@@ -390,7 +390,7 @@ const Terminal = ({
       <div className="px-4 py-2 bg-card/30 border-t border-border/30 flex items-center justify-between text-xs text-muted-foreground">
         <span>zsh • tab to autocomplete • ↑↓ history</span>
         <span className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_6px_#FFA500] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_6px_hsl(var(--primary)/0.7)] animate-pulse" />
           interactive
         </span>
       </div>

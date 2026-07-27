@@ -77,7 +77,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted/30">
+    <section id="contact" className="py-20 bg-gradient-section">
       <div className="container mx-auto px-4">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-12">

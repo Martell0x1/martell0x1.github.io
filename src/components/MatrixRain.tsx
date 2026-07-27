@@ -30,8 +30,8 @@ const MatrixRain = () => {
       ctx.fillStyle = "rgba(10, 14, 20, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Red/pink color for NestJS theme
-      ctx.fillStyle = "hsl(346, 82%, 55%)";
+      // Teal accent for Soft Ocean theme
+      ctx.fillStyle = "hsl(174, 45%, 36%)";
       ctx.font = `${fontSize}px JetBrains Mono, monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -41,12 +41,12 @@ const MatrixRain = () => {
 
         // Vary the opacity for depth effect
         const opacity = Math.random() * 0.5 + 0.3;
-        ctx.fillStyle = `hsla(346, 82%, 55%, ${opacity})`;
+        ctx.fillStyle = `hsla(174, 45%, 36%, ${opacity})`;
         ctx.fillText(char, x, y);
 
         // Brighter leading character
         if (Math.random() > 0.95) {
-          ctx.fillStyle = "hsl(346, 82%, 75%)";
+          ctx.fillStyle = "hsl(174, 45%, 58%)";
           ctx.fillText(char, x, y);
         }
 

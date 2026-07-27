@@ -3,43 +3,45 @@ import { Button } from "@/components/ui/button";
 import Terminal from "./Terminal";
 import ParticleNetwork from "./ParticleNetwork";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import resumeAsset from "@/assets/resume.pdf.asset.json";
 import { usePageViews } from "@/hooks/use-page-views";
+
+const IMPACT_STATS = [
+  { value: "106+", label: "Commits at Dice" },
+  { value: "40+", label: "REST APIs shipped" },
+  { value: "2k+", label: "Jobs every 30 min" },
+];
 
 const HeroSection = () => {
   const { viewCount, isLoading } = usePageViews("home");
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative pt-16 overflow-hidden">
-      {/* Animated Particle Network Background */}
-      <ParticleNetwork />
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/40" style={{ zIndex: 0 }} />
-
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--accent))_0%,transparent_50%)] opacity-50" />
+    <section className="min-h-screen flex flex-col justify-center relative pt-16 pb-24 overflow-hidden">
       <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
+        className="absolute inset-0 bg-gradient-hero"
+        style={{ zIndex: 0 }}
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,hsl(198_50%_88%/0.7)_0%,transparent_48%),radial-gradient(ellipse_at_90%_85%,hsl(38_40%_90%/0.55)_0%,transparent_50%)]"
+        style={{ zIndex: 0 }}
+        aria-hidden
       />
 
+      <ParticleNetwork />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 flex-1 flex flex-col justify-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
           <div
             className="space-y-6 opacity-0 animate-fade-in"
             style={{ animationDelay: "200ms", animationFillMode: "forwards" }}
           >
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-orange-400/50 text-sm font-medium shadow-[0_0_15px_rgba(251,146,60,0.3)] hover:shadow-[0_0_25px_rgba(251,146,60,0.5)] transition-shadow duration-300">
-                <span className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_8px_#fb923c,0_0_16px_#fb923c] animate-pulse" />
-                <span className="text-orange-400 drop-shadow-[0_0_8px_rgba(251,146,60,0.8)]">Available for opportunities</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/70 border border-primary/30 text-sm font-medium shadow-glow backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--primary)/0.7)] animate-pulse" />
+                <span className="text-primary">Available for opportunities</span>
               </div>
-              
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/50 border border-border/50 text-sm font-medium text-muted-foreground">
+
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/60 border border-border/60 text-sm font-medium text-muted-foreground backdrop-blur-sm">
                 <Eye className="w-4 h-4" />
                 <span>
                   {isLoading ? "..." : viewCount?.toLocaleString() ?? "0"} views
@@ -47,14 +49,13 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Profile Photo - Mobile */}
             <div className="lg:hidden flex justify-center mb-6">
               <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-full blur-md opacity-75 animate-pulse" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary/40 to-accent rounded-full blur-md opacity-65 animate-pulse" />
                 <img
                   src={profilePhoto}
                   alt="Marwan Mohamed Zein"
-                  className="relative w-32 h-32 rounded-full object-cover border-2 border-primary/50 shadow-glow"
+                  className="relative w-32 h-32 rounded-full object-cover border-2 border-card shadow-glow"
                 />
               </div>
             </div>
@@ -72,43 +73,43 @@ const HeroSection = () => {
                 Full Stack Developer
               </span>{" "}
               with expertise in{" "}
-              <span className="text-foreground font-medium">
-                Angular
-              </span>
-              ,{" "}
-              <span className="text-foreground font-medium">
-                .NET
-              </span>
-              , and{" "}
-              <span className="text-foreground font-medium">Node.js</span>
-              . Also specializing in{" "}
+              <span className="text-foreground font-medium">Angular</span>,{" "}
+              <span className="text-foreground font-medium">.NET</span>, and{" "}
+              <span className="text-foreground font-medium">Node.js</span>. Also
+              specializing in{" "}
               <span className="text-foreground font-medium">
                 embedded development
-              </span>
-              {" "}and{" "}
+              </span>{" "}
+              and{" "}
               <span className="text-foreground font-medium">IoT solutions</span>
               . FCDS Student from Alexandria, Egypt. Passionate about Linux,
               Rust, and building reliable systems from hardware to cloud.
             </p>
 
+            <p className="text-sm md:text-base text-foreground/90 max-w-lg leading-relaxed border-l-2 border-primary/50 pl-4">
+              <span className="font-medium text-primary">Looking for:</span>{" "}
+              Backend / systems roles and internships — remote or hybrid. Keen
+              on APIs, queues, data pipelines, and IoT platforms.
+            </p>
+
             <div className="flex flex-wrap gap-3">
+              <Button size="lg" className="gap-2" asChild>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  Download Resume
+                </a>
+              </Button>
               <Button size="lg" variant="outline" asChild>
                 <a href="#projects">
                   View Projects
                   <ArrowDown className="w-4 h-4" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="ghost" asChild>
                 <a href="#contact">Get in Touch</a>
-              </Button>
-              <Button size="lg" className="gap-2" asChild>
-                <a href={resumeAsset.url} target="_blank" rel="noopener noreferrer">
-                  Download Resume
-                </a>
               </Button>
             </div>
 
-            <div className="flex items-center gap-4 pt-4">
+            <div className="flex items-center gap-4 pt-2">
               <a
                 href="https://github.com/Martell0x1"
                 target="_blank"
@@ -142,22 +143,19 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Content - Profile Photo + Terminal */}
           <div
             className="space-y-6 opacity-0 animate-fade-in"
             style={{ animationDelay: "500ms", animationFillMode: "forwards" }}
           >
-            {/* Profile Photo - Desktop */}
             <div className="hidden lg:flex justify-center mb-6">
               <div className="relative group">
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary via-primary/50 to-primary rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500 animate-pulse" />
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary via-primary/45 to-accent rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500 animate-pulse" />
                 <div className="relative">
                   <img
                     src={profilePhoto}
                     alt="Marwan Mohamed Zein"
                     className="w-48 h-48 rounded-full object-cover border-4 border-card shadow-2xl"
                   />
-                  {/* Glitch overlay effect on hover */}
                   <div className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 group-hover:animate-flicker transition-opacity" />
                 </div>
               </div>
@@ -166,9 +164,28 @@ const HeroSection = () => {
             <Terminal className="shadow-xl" />
           </div>
         </div>
+
+        {/* Impact strip */}
+        <div
+          className="mt-14 md:mt-16 opacity-0 animate-fade-in"
+          style={{ animationDelay: "750ms", animationFillMode: "forwards" }}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {IMPACT_STATS.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-2xl border border-border/60 bg-card/60 backdrop-blur-sm px-5 py-4 text-center"
+              >
+                <p className="text-2xl md:text-3xl font-bold text-primary tracking-tight">
+                  {stat.value}
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in"
         style={{ animationDelay: "1000ms", animationFillMode: "forwards" }}

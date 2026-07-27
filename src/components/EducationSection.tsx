@@ -26,7 +26,7 @@ const EDUCATION: Education[] = [
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-20 bg-muted/30">
+    <section id="education" className="py-20 bg-gradient-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <ScrollReveal animation="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
@@ -37,7 +37,7 @@ const EducationSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {EDUCATION.map((edu, idx) => (
             <ScrollReveal key={idx} animation="fade-up" delay={idx * 150}>
-              <Card className="group relative overflow-hidden border-border/50 bg-card/80 backdrop-blur-md hover:border-primary/50 transition-all duration-500 hover:shadow-glow">
+              <Card className="group relative overflow-hidden border-border/50 bg-gradient-card backdrop-blur-md hover:border-primary/40 transition-all duration-500 hover:shadow-glow">
                 {/* Animated gradient border effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 

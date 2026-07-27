@@ -9,23 +9,42 @@ const ParticleNetwork = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    const parent = canvas.parentElement;
+    if (!parent) return;
+
+    let width = 0;
+    let height = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const resize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = parent.getBoundingClientRect();
+      width = Math.max(1, Math.floor(rect.width));
+      height = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
-    window.addEventListener("resize", resize);
+    resize();
 
-    // Warm amber/orange particle color that complements the crimson theme
-    const getPrimary = () => "25 95% 60%";
+    const ro = new ResizeObserver(resize);
+    ro.observe(parent);
+
+    const getPrimary = () => {
+      const v = getComputedStyle(document.documentElement)
+        .getPropertyValue("--primary")
+        .trim();
+      return v || "174 45% 36%";
+    };
     let primary = getPrimary();
 
     const mouse = { x: -9999, y: -9999 };
     const onMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
     };
     const onLeave = () => {
       mouse.x = -9999;
@@ -35,16 +54,16 @@ const ParticleNetwork = () => {
     window.addEventListener("mouseleave", onLeave);
 
     type P = { x: number; y: number; vx: number; vy: number; r: number };
-    const count = Math.min(90, Math.floor((width * height) / 18000));
+    const count = Math.min(110, Math.floor((width * height) / 14000));
     const particles: P[] = Array.from({ length: count }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
       r: Math.random() * 1.8 + 0.6,
     }));
 
-    const maxDist = 130;
+    const maxDist = 140;
     let raf = 0;
 
     const tick = () => {
@@ -57,19 +76,18 @@ const ParticleNetwork = () => {
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
-        // Mouse repulsion
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const d2 = dx * dx + dy * dy;
-        if (d2 < 120 * 120) {
+        if (d2 < 140 * 140) {
           const d = Math.sqrt(d2) || 1;
-          p.x += (dx / d) * 0.8;
-          p.y += (dy / d) * 0.8;
+          p.x += (dx / d) * 0.9;
+          p.y += (dy / d) * 0.9;
         }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${primary}, 0.85)`;
+        ctx.fillStyle = `hsla(${primary}, 0.9)`;
         ctx.fill();
       }
 
@@ -81,9 +99,9 @@ const ParticleNetwork = () => {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.35;
+            const alpha = (1 - dist / maxDist) * 0.4;
             ctx.strokeStyle = `hsla(${primary}, ${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineWidth = 0.7;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -98,7 +116,7 @@ const ParticleNetwork = () => {
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
+      ro.disconnect();
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseleave", onLeave);
     };
@@ -107,8 +125,9 @@ const ParticleNetwork = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none opacity-60"
-      style={{ zIndex: 0 }}
+      className="absolute inset-0 pointer-events-none opacity-45"
+      style={{ zIndex: 1 }}
+      aria-hidden
     />
   );
 };

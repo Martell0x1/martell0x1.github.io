@@ -10,7 +10,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-muted/30">
+    <section id="about" className="py-20 bg-gradient-section">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal animation="fade-up">
