@@ -11,10 +11,12 @@ const statusLabel: Record<string, string> = {
 
 const statusClass: Record<string, string> = {
   merged:
-    "border-primary/60 text-primary bg-primary/10 shadow-[0_0_14px_hsl(var(--primary)/0.6)] drop-shadow-[0_0_6px_hsl(var(--primary)/0.7)]",
+    "border-amber-400/60 text-amber-300 bg-amber-400/10 shadow-[0_0_14px_rgba(251,191,36,0.6)] drop-shadow-[0_0_6px_rgba(251,191,36,0.7)]",
   open: "border-emerald-500/50 text-emerald-400 bg-emerald-500/10 shadow-[0_0_10px_rgba(16,185,129,0.45)]",
-  closed: "border-muted-foreground/30 text-muted-foreground bg-muted/40",
+  closed:
+    "border-red-500/60 text-red-400 bg-red-500/10 shadow-[0_0_14px_rgba(239,68,68,0.55)] drop-shadow-[0_0_6px_rgba(239,68,68,0.65)]",
 };
+
 
 
 const ContributionRow = ({ item }: { item: Contribution }) => (

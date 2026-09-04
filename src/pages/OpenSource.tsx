@@ -1,7 +1,9 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import OpenSourceProjectCard from "@/components/OpenSourceProjectCard";
+import GitHubHeatmap from "@/components/GitHubHeatmap";
 import { openSourceProjects } from "@/data/openSource";
+
 
 const OpenSource = () => (
   <div className="min-h-screen text-foreground bg-transparent">
@@ -17,8 +19,13 @@ const OpenSource = () => (
             the work I've done and the pull requests behind it.
           </p>
 
+          <div className="mt-10">
+            <GitHubHeatmap />
+          </div>
+
           {openSourceProjects.length > 0 ? (
             <div className="mt-10 space-y-6">
+
               {openSourceProjects.map((project) => (
                 <OpenSourceProjectCard key={project.name} project={project} />
               ))}
