@@ -23,6 +23,9 @@ jobs:
 
       # 4. Build the project
       - run: npm run build
+      
+      - name: Fix SPA routing
+        run: cp dist/index.html dist/404.html
 
       # 5. Deploy to GitHub Pages
       - uses: peaceiris/actions-gh-pages@v3
