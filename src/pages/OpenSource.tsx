@@ -1,7 +1,9 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import OpenSourceProjectCard from "@/components/OpenSourceProjectCard";
+import GitHubHeatmap from "@/components/GitHubHeatmap";
 import { openSourceProjects } from "@/data/openSource";
+
 
 const OpenSource = () => (
   <div className="min-h-screen text-foreground bg-transparent">
