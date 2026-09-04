@@ -81,6 +81,10 @@
     --gradient-hero: linear-gradient(180deg, hsl(210 18% 97%) 0%, hsl(210 16% 95%) 100%);
     --gradient-card: linear-gradient(165deg, hsl(0 0% 100%) 0%, hsl(210 16% 98%) 100%);
     --gradient-section: linear-gradient(180deg, hsl(210 16% 96% / 0.6) 0%, hsl(210 14% 95% / 0.4) 100%);
+
+    --github-open: 26 124 55;
+    --github-merged: 130 80 223;
+    --github-closed: 207 34 46;
   }
 
   /* Soft Ocean — dark mode (brighter for particle / UI contrast) */
@@ -168,6 +172,10 @@
     --shadow-lg: 0 12px 28px 0px hsl(0 0% 0% / 0.38);
     --shadow-xl: 0 20px 40px -8px hsl(0 0% 0% / 0.42);
     --shadow-2xl: 0 28px 56px -12px hsl(0 0% 0% / 0.5);
+
+    --github-open: 63 185 80;
+    --github-merged: 163 113 247;
+    --github-closed: 248 81 73;
   }
 }
 
@@ -211,16 +219,55 @@
 }
 
 .glow-primary {
-  --glow-color: hsla(174, 48%, 46%, 0.5);
+  --glow-color: hsl(var(--primary) / 0.5);
   animation: glow-pulse 3s ease-in-out infinite;
 }
 
-.glow-amber {
-  --glow-color: rgba(251, 191, 36, 0.5);
+.status-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+}
+
+.status-dot-open {
+  background-color: rgb(var(--github-open));
+  --glow-color: rgb(var(--github-open) / 0.6);
   animation: glow-pulse 3s ease-in-out infinite;
 }
 
-.glow-red {
-  --glow-color: rgba(239, 68, 68, 0.5);
+.status-dot-merged {
+  background-color: rgb(var(--github-merged));
+  --glow-color: rgb(var(--github-merged) / 0.6);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.status-dot-closed {
+  background-color: rgb(var(--github-closed));
+  --glow-color: rgb(var(--github-closed) / 0.6);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.badge-status-open {
+  border-color: rgb(var(--github-open) / 0.55);
+  color: rgb(var(--github-open));
+  background-color: rgb(var(--github-open) / 0.1);
+  --glow-color: rgb(var(--github-open) / 0.5);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.badge-status-merged {
+  border-color: rgb(var(--github-merged) / 0.55);
+  color: rgb(var(--github-merged));
+  background-color: rgb(var(--github-merged) / 0.1);
+  --glow-color: rgb(var(--github-merged) / 0.5);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.badge-status-closed {
+  border-color: rgb(var(--github-closed) / 0.55);
+  color: rgb(var(--github-closed));
+  background-color: rgb(var(--github-closed) / 0.1);
+  --glow-color: rgb(var(--github-closed) / 0.5);
   animation: glow-pulse 3s ease-in-out infinite;
 }

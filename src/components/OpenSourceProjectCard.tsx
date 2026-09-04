@@ -1,7 +1,7 @@
 import { ExternalLink, Github, GitPullRequest } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import type { Contribution, OpenSourceProject } from "@/data/openSource";
+import type { Contribution, ContributionStatus, OpenSourceProject } from "@/data/openSource";
 
 const statusLabel: Record<string, string> = {
   merged: "Merged",
@@ -10,14 +10,45 @@ const statusLabel: Record<string, string> = {
 };
 
 const statusClass: Record<string, string> = {
-  merged:
-    "border-amber-400/60 text-amber-300 bg-amber-400/10 glow-amber",
-  open: "border-emerald-500/50 text-emerald-400 bg-emerald-500/10 shadow-[0_0_10px_rgba(16,185,129,0.45)]",
-  closed:
-    "border-red-500/60 text-red-400 bg-red-500/10 glow-red",
+  merged: "badge-status-merged",
+  open: "badge-status-open",
+  closed: "badge-status-closed",
 };
 
+const dotClass: Record<ContributionStatus, string> = {
+  merged: "status-dot-merged",
+  open: "status-dot-open",
+  closed: "status-dot-closed",
+};
 
+const statusOrder: ContributionStatus[] = ["open", "merged", "closed"];
+
+const summaryLabel: Record<ContributionStatus, string> = {
+  merged: "Merged",
+  open: "Open",
+  closed: "Closed",
+};
+
+const StatusSummary = ({ contributions }: { contributions: Contribution[] }) => {
+  if (contributions.length === 0) return null;
+  const count = (s: ContributionStatus) =>
+    contributions.filter((c) => c.status === s).length;
+  const total = contributions.length;
+
+  return (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+      <span className="text-muted-foreground">
+        Total: <span className="font-semibold text-foreground">{total}</span>
+      </span>
+      {statusOrder.map((s) => (
+        <span key={s} className="flex items-center gap-1.5">
+          <span className={cn("status-dot", dotClass[s])} />
+          <span>{count(s)} {summaryLabel[s]}</span>
+        </span>
+      ))}
+    </div>
+  );
+};
 
 const ContributionRow = ({ item }: { item: Contribution }) => (
   <li className="rounded-lg border border-border/60 bg-background/40 p-4">
@@ -25,11 +56,6 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
       <GitPullRequest className="w-4 h-4 mt-1 text-primary shrink-0" />
       <div className="min-w-0 space-y-2">
         <h4 className="font-medium text-foreground leading-snug">{item.title}</h4>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          {item.description ?? (
-            <span className="italic opacity-70">Description coming soon.</span>
-          )}
-        </p>
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
           {item.status ? (
             <Badge
@@ -42,6 +68,26 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
             <Badge variant="outline" className="font-mono text-[11px] text-muted-foreground">
               Status pending
             </Badge>
+          )}
+          {item.labels && item.labels.length > 0 && (
+            <>
+              <span className="flex items-center gap-1.5">
+                <span className="h-3 w-px bg-border" aria-hidden />
+                {item.labels.map((l) => (
+                  <span
+                    key={l.name}
+                    className="inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] leading-none"
+                    style={{
+                      backgroundColor: `#${l.color}29`,
+                      borderColor: `#${l.color}80`,
+                      color: `#${l.color}`,
+                    }}
+                  >
+                    {l.name}
+                  </span>
+                ))}
+              </span>
+            </>
           )}
           <span className="text-muted-foreground">
             {item.prNumber ? `PR #${item.prNumber}` : "PR number pending"}
@@ -62,20 +108,20 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
   </li>
 );
 
-const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => (
-  <article className="rounded-xl border border-border bg-card/70 p-6 hover:border-primary/30 transition-colors">
-    <header className="flex flex-wrap items-baseline justify-between gap-2">
-      <h2 className="text-2xl font-semibold text-foreground">{project.name}</h2>
-      <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground">
-        {project.language && <span>{project.language}</span>}
-        {project.contributions.length > 0 && (
-          <span>
-            {project.contributions.length}{" "}
-            {project.contributions.length === 1 ? "contribution" : "contributions"}
-          </span>
-        )}
-      </div>
-    </header>
+const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => {
+  const visible = project.loading
+    ? []
+    : project.contributions.filter((c) => c.status !== "closed");
+
+  return (
+    <article className="rounded-xl border border-border bg-card/70 p-6 hover:border-primary/30 transition-colors">
+      <header className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="text-2xl font-semibold text-foreground">{project.name}</h2>
+        <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground">
+          {project.language && <span>{project.language}</span>}
+          <StatusSummary contributions={project.contributions} />
+        </div>
+      </header>
 
     <p className="mt-2 text-muted-foreground leading-relaxed">
       {project.description ?? (
@@ -83,20 +129,24 @@ const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => (
       )}
     </p>
 
-    {project.contributions.length > 0 ? (
+    {project.loading ? (
+      <p className="mt-6 text-sm italic text-muted-foreground opacity-70">
+        Loading contributions…
+      </p>
+    ) : visible.length > 0 ? (
       <>
         <h3 className="mt-6 mb-3 text-sm font-mono uppercase tracking-wider text-muted-foreground">
           Contributions
         </h3>
         <ul className="space-y-3">
-          {project.contributions.map((c) => (
-            <ContributionRow key={c.title} item={c} />
+          {visible.map((c) => (
+            <ContributionRow key={c.prNumber ?? c.title} item={c} />
           ))}
         </ul>
       </>
     ) : (
       <p className="mt-6 text-sm italic text-muted-foreground opacity-70">
-        Contributions will be added soon.
+        No open or merged contributions right now.
       </p>
     )}
 
@@ -113,6 +163,7 @@ const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => (
       </a>
     )}
   </article>
-);
+  );
+};
 
 export default OpenSourceProjectCard;
