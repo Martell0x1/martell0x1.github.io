@@ -11,7 +11,7 @@ const levelClass = [
   "bg-primary/25",
   "bg-primary/45",
   "bg-primary/70",
-  "bg-primary shadow-[0_0_8px_hsl(var(--primary)/0.7)]",
+  "bg-primary glow-primary",
 ];
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

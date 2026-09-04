@@ -6,15 +6,15 @@ import type { Contribution, OpenSourceProject } from "@/data/openSource";
 const statusLabel: Record<string, string> = {
   merged: "Merged",
   open: "Open",
-  closed: "Closed",
+  closed: "Closed after maintainer discussion",
 };
 
 const statusClass: Record<string, string> = {
   merged:
-    "border-amber-400/60 text-amber-300 bg-amber-400/10 shadow-[0_0_14px_rgba(251,191,36,0.6)] drop-shadow-[0_0_6px_rgba(251,191,36,0.7)]",
+    "border-amber-400/60 text-amber-300 bg-amber-400/10 glow-amber",
   open: "border-emerald-500/50 text-emerald-400 bg-emerald-500/10 shadow-[0_0_10px_rgba(16,185,129,0.45)]",
   closed:
-    "border-red-500/60 text-red-400 bg-red-500/10 shadow-[0_0_14px_rgba(239,68,68,0.55)] drop-shadow-[0_0_6px_rgba(239,68,68,0.65)]",
+    "border-red-500/60 text-red-400 bg-red-500/10 glow-red",
 };
 
 
