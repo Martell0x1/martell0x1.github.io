@@ -10,10 +10,12 @@ const statusLabel: Record<string, string> = {
 };
 
 const statusClass: Record<string, string> = {
-  merged: "border-primary/40 text-primary bg-primary/10",
-  open: "border-emerald-500/40 text-emerald-400 bg-emerald-500/10",
+  merged:
+    "border-primary/60 text-primary bg-primary/10 shadow-[0_0_14px_hsl(var(--primary)/0.6)] drop-shadow-[0_0_6px_hsl(var(--primary)/0.7)]",
+  open: "border-emerald-500/50 text-emerald-400 bg-emerald-500/10 shadow-[0_0_10px_rgba(16,185,129,0.45)]",
   closed: "border-muted-foreground/30 text-muted-foreground bg-muted/40",
 };
+
 
 const ContributionRow = ({ item }: { item: Contribution }) => (
   <li className="rounded-lg border border-border/60 bg-background/40 p-4">
