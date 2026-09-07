@@ -1,4 +1,5 @@
 import { ArrowDown, Github, Linkedin, Mail, Youtube, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Terminal from "./Terminal";
 import ParticleNetwork from "./ParticleNetwork";
@@ -69,42 +70,55 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              <span className="text-primary font-medium">Backend Developer</span>{" "}
+              <span className="text-foreground font-bold">Backend Developer</span>{" "}
               focused on building reliable{" "}
-              <span className="text-primary font-medium">APIs</span>,{" "}
-              <span className="text-primary font-medium">distributed systems</span>, and{" "}
-              <span className="text-primary font-medium">data-intensive applications</span>.
+              <span className="text-foreground font-bold">APIs</span>,{" "}
+              <span className="text-foreground font-bold">distributed systems</span>, and{" "}
+              <span className="text-foreground font-bold">data-intensive applications</span>.
               Experienced with{" "}
-              <span className="text-primary font-medium">.NET</span>,{" "}
-              <span className="text-primary font-medium">Node.js</span>,{" "}
-              <span className="text-primary font-medium">PHP/Laravel</span>,{" "}
-              <span className="text-primary font-medium">Redis</span>,{" "}
-              <span className="text-primary font-medium">Docker</span>, and databases, with a strong
+              <span className="text-foreground font-bold">.NET</span>,{" "}
+              <span className="text-foreground font-bold">Node.js</span>,{" "}
+              <span className="text-foreground font-bold">PHP/Laravel</span>,{" "}
+              <span className="text-foreground font-bold">Redis</span>,{" "}
+              <span className="text-foreground font-bold">Docker</span>, and databases, with a strong
               interest in{" "}
-              <span className="text-primary font-medium">systems engineering</span> and{" "}
-              <span className="text-primary font-medium">backend infrastructure</span>.
+              <span className="text-foreground font-bold">systems engineering</span> and{" "}
+              <span className="text-foreground font-bold">backend infrastructure</span>.
             </p>
 
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              I’m an <span className="text-primary font-medium">FCDS</span> student from{" "}
-              <span className="text-primary font-medium">Alexandria, Egypt</span>, passionate about{" "}
-              <span className="text-primary font-medium">Linux</span>,{" "}
-              <span className="text-primary font-medium">Rust</span>,{" "}
-              <span className="text-primary font-medium">open-source development</span>, and understanding how
+              I’m an <span className="text-foreground font-bold">FCDS</span> student from{" "}
+              <span className="text-foreground font-bold">Alexandria, Egypt</span>, passionate about{" "}
+              <span className="text-foreground font-bold">Linux</span>,{" "}
+              <span className="text-foreground font-bold">Rust</span>,{" "}
+              <span className="text-foreground font-bold">open-source development</span>, and understanding how
               systems work under the hood.
+            </p>
+
+            <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
+              I also ship{" "}
+              <span className="text-foreground font-bold">open-source contributions</span>{" "}
+              to projects I use and care about. Take a look at my{" "}
+              <Link
+                to="/open-source"
+                className="text-foreground font-bold underline decoration-primary underline-offset-4 hover:text-primary transition-colors"
+              >
+                open-source work
+              </Link>
+              .
             </p>
 
             <p className="text-sm md:text-base text-foreground max-w-lg leading-relaxed rounded-xl border border-primary/40 bg-card/80 backdrop-blur-sm px-4 py-3 shadow-glow">
               <span className="font-semibold text-primary">Looking for:</span>{" "}
               <span className="text-foreground/95">
-                <span className="text-primary font-medium">Backend / Systems roles and internships</span>{" "}
+                <span className="text-foreground font-bold">Backend / Systems roles and internships</span>{" "}
                 — remote or hybrid. Interested in{" "}
-                <span className="text-primary font-medium">APIs</span>,{" "}
-                <span className="text-primary font-medium">queues</span>,{" "}
-                <span className="text-primary font-medium">distributed systems</span>,{" "}
-                <span className="text-primary font-medium">data pipelines</span>,{" "}
-                <span className="text-primary font-medium">caching</span>, and{" "}
-                <span className="text-primary font-medium">infrastructure</span>.
+                <span className="text-foreground font-bold">APIs</span>,{" "}
+                <span className="text-foreground font-bold">queues</span>,{" "}
+                <span className="text-foreground font-bold">distributed systems</span>,{" "}
+                <span className="text-foreground font-bold">data pipelines</span>,{" "}
+                <span className="text-foreground font-bold">caching</span>, and{" "}
+                <span className="text-foreground font-bold">infrastructure</span>.
               </span>
             </p>
 
