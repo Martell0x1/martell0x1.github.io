@@ -69,28 +69,24 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              <span className="text-foreground font-medium">
-                Full Stack Developer
-              </span>{" "}
-              with expertise in{" "}
-              <span className="text-foreground font-medium">Angular</span>,{" "}
-              <span className="text-foreground font-medium">.NET</span>, and{" "}
-              <span className="text-foreground font-medium">Node.js</span>. Also
-              specializing in{" "}
-              <span className="text-foreground font-medium">
-                embedded development
-              </span>{" "}
-              and{" "}
-              <span className="text-foreground font-medium">IoT solutions</span>
-              . FCDS Student from Alexandria, Egypt. Passionate about Linux,
-              Rust, and building reliable systems from hardware to cloud.
+              Backend Developer focused on building reliable APIs, distributed
+              systems, and data-intensive applications. Experienced with .NET,
+              Node.js, PHP/Laravel, Redis, Docker, and databases, with a strong
+              interest in systems engineering and backend infrastructure.
+            </p>
+
+            <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
+              I’m an FCDS student from Alexandria, Egypt, passionate about
+              Linux, Rust, open-source development, and understanding how
+              systems work under the hood.
             </p>
 
             <p className="text-sm md:text-base text-foreground max-w-lg leading-relaxed rounded-xl border border-primary/40 bg-card/80 backdrop-blur-sm px-4 py-3 shadow-glow">
               <span className="font-semibold text-primary">Looking for:</span>{" "}
               <span className="text-foreground/95">
-                Backend / systems roles and internships — remote or hybrid. Keen
-                on APIs, queues, data pipelines, and IoT platforms.
+                Backend / Systems roles and internships — remote or hybrid.
+                Interested in APIs, queues, distributed systems, data pipelines,
+                caching, and infrastructure.
               </span>
             </p>
 
