@@ -25,6 +25,7 @@ const Navigation = () => {
     { label: "Education", href: hash("education") },
     { label: "Projects", href: hash("projects") },
     { label: "Open Source", href: "/open-source" },
+    { label: "Recommendations", href: hash("recommendations") },
     { label: "Contact", href: hash("contact") },
   ];
 
