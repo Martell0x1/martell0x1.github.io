@@ -68,7 +68,7 @@ const ProjectsSection = () => {
   }, [activeFilter]);
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 bg-section-4">
       <div className="container mx-auto px-4">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-8">

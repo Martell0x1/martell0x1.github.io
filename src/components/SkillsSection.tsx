@@ -42,7 +42,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-20 bg-section-1">
       <div className="container mx-auto px-4">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-12">

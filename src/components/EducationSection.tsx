@@ -26,7 +26,7 @@ const EDUCATION: Education[] = [
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-20 bg-gradient-section">
+    <section id="education" className="py-20 bg-section-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <ScrollReveal animation="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">

@@ -1,75 +1,133 @@
-import { Quote, Linkedin } from "lucide-react";
+import { ExternalLink, Quote } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ScrollReveal from "./ScrollReveal";
+import { cn } from "@/lib/utils";
+import { recommendations, type Recommendation } from "@/data/recommendations";
 
-interface Recommendation {
-  name: string;
-  headline: string;
-  relation: string;
-  text: string;
+const getInitials = (name: string) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+
+interface RecommendationCardProps {
+  recommendation: Recommendation;
+  featured?: boolean;
 }
 
-const RECOMMENDATIONS: Recommendation[] = [
-  {
-    name: "Yahya Zakaria",
-    headline: "Ex-SWE Intern @ Deloitte Innovation Hub | Ex-Research Intern @ Nile University | Big Data Alumnus @ SIC",
-    relation: "Worked with Marwan on the same team",
-    text: "Honestly, Marwan is one of the best teammates that I have worked with; he demonstrated strong and great technical skills in various fields, especially backend and architectural design. Most importantly, he proved that he is eager to learn new things and solve problems; he is so supportive, and you will find him whenever you ask. I worked with him on various projects; one of them was a smart parking system using IoT. He was able to deliver tasks early with high quality. Definitely, Marwan is a good addition to any team.",
-  },
-  {
-    name: "Mahmoud Mostafa",
-    headline: "Front-end Developer",
-    relation: "Worked with Marwan on the same team",
-    text: "It is a pleasure to recommend Marwan for future opportunities. He is exceptionally hardworking, highly ambitious, and possesses a genuine passion for learning new skills. During his time working with me, Marwan proved to be a fast learner and an active listener who constantly seeks to expand his capabilities. He takes full ownership of his responsibilities, approaches challenges with a proactive mindset, and brings a positive energy to the team. Marwan’s dedication, adaptability, and drive make him an outstanding intern. I recommend him without reservation and am confident he will be a tremendous asset to any team.",
-  },
-  {
-    name: "Huda Ali",
-    headline: "EX SWE Intern @ Accord Business Group | ITI & DEPI .NET Graduate | Backend Developer | CS Student @ Alexandria University",
-    relation: "Studied together",
-    text: "I had the opportunity to work with Marawan on several projects before, and I really appreciate his dedication and hard work to make the project in the best engineering architecture and implementation. He is a great problem-solver who finds software solutions. I highly recommend him.",
-  },
-];
+const RecommendationCard = ({
+  recommendation,
+  featured = false,
+}: RecommendationCardProps) => {
+  const { name, role, relationship, text, avatar, linkedin } = recommendation;
+
+  return (
+    <figure
+      className={cn(
+        "group relative flex h-full flex-col rounded-xl border p-6 transition-all duration-300",
+        featured
+          ? "border-primary/20 bg-gradient-card shadow-sm"
+          : "border-border/60 bg-card hover:border-primary/30 hover:shadow-sm"
+      )}
+    >
+      <figcaption className="flex items-start gap-4">
+        <Avatar
+          className={cn(
+            "shrink-0 ring-1 ring-border/70",
+            featured ? "h-14 w-14" : "h-11 w-11"
+          )}
+        >
+          <AvatarImage src={avatar} alt={`Photo of ${name}`} />
+          <AvatarFallback className="bg-primary/10 font-semibold text-primary">
+            {getInitials(name)}
+          </AvatarFallback>
+        </Avatar>
+        <div className="min-w-0 flex-1">
+          <p className="font-semibold text-foreground leading-snug">{name}</p>
+          <p className="mt-0.5 text-sm text-muted-foreground leading-snug">
+            {role}
+          </p>
+          <p className="mt-1.5 text-xs font-medium text-primary">
+            {relationship}
+          </p>
+        </div>
+      </figcaption>
+
+      <blockquote className={cn("flex-1", featured ? "mt-6" : "mt-5")}>
+        <Quote
+          aria-hidden
+          className={cn(
+            "mb-3 text-primary/40",
+            featured ? "h-6 w-6" : "h-5 w-5"
+          )}
+        />
+        <p
+          className={cn(
+            "text-muted-foreground leading-relaxed",
+            featured ? "text-base" : "text-sm"
+          )}
+        >
+          {text}
+        </p>
+      </blockquote>
+
+      {linkedin && (
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${name}'s LinkedIn profile (opens in a new tab)`}
+          className="mt-5 inline-flex items-center gap-1.5 self-start rounded text-sm font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:outline-none"
+        >
+          View on LinkedIn
+          <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden />
+        </a>
+      )}
+    </figure>
+  );
+};
 
 const RecommendationsSection = () => {
+  const featured = recommendations.find((r) => r.featured) ?? recommendations[0];
+
+  if (!featured) return null;
+
+  const rest = recommendations.filter((r) => r !== featured);
+
   return (
-    <section id="recommendations" className="py-20">
+    <section id="recommendations" className="py-20 bg-section-5">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="mx-auto max-w-6xl">
           <ScrollReveal animation="fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">
-              <span className="text-primary">Recommendations</span>
-            </h2>
-            <p className="text-muted-foreground mb-10">
-              What teammates and collaborators say about working with me.
-            </p>
+            <div className="mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-primary">Recommendations</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl">
+                What teammates and collaborators say about working with me.
+              </p>
+            </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {RECOMMENDATIONS.map((rec, index) => (
-              <ScrollReveal
-                key={rec.name}
-                animation="fade-up"
-                delay={150 + index * 100}
-              >
-                <div className="relative h-full flex flex-col p-6 rounded-xl bg-card border border-border hover:border-primary/40 hover:shadow-glow transition-all duration-300">
-                  <Quote className="w-8 h-8 text-primary/60 mb-4" />
+          <div className="grid gap-6 lg:grid-cols-12">
+            <ScrollReveal animation="fade-up" className="h-full lg:col-span-7">
+              <RecommendationCard recommendation={featured} featured />
+            </ScrollReveal>
 
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                    “{rec.text}”
-                  </p>
-
-                  <div className="mt-6 pt-4 border-t border-border/60">
-                    <div className="flex items-center gap-2">
-                      <p className="font-semibold text-foreground">{rec.name}</p>
-                      <Linkedin className="w-4 h-4 text-primary/70" />
-                    </div>
-                    <p className="text-xs text-primary/90 mt-1">{rec.relation}</p>
-                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                      {rec.headline}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+            <div className="grid gap-6 lg:col-span-5">
+              {rest.map((rec, index) => (
+                <ScrollReveal
+                  key={rec.name}
+                  animation="fade-up"
+                  delay={100 + index * 100}
+                  className="h-full"
+                >
+                  <RecommendationCard recommendation={rec} />
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>

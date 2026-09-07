@@ -20,6 +20,40 @@ interface Experience {
 
 const EXPERIENCES: Experience[] = [
   {
+    role: "Junior Backend Developer",
+    company: "Dice Marketing & Advertising · Spread Social Platform",
+    period: "August 2026 – Present",
+    location: "Egypt, Cairo, Heliopolis",
+    status: "Current",
+    logo: diceLogo,
+    logoAlt: "Dice Marketing & Advertising logo",
+    bullets: [
+      <>
+        Built backend services and{" "}
+        <strong className="text-foreground font-semibold">REST APIs</strong> focused on maintainability, reliable data flows, and production-oriented engineering.
+      </>,
+      <>
+        Designed and integrated <strong className="text-foreground font-semibold">SQL</strong> and{" "}
+        <strong className="text-foreground font-semibold">NoSQL</strong> databases, implementing data models, queries, persistence layers, and{" "}
+        <strong className="text-foreground font-semibold">ClickHouse</strong> for analytics workloads.
+      </>,
+      <>
+        Implemented{" "}
+        <strong className="text-foreground font-semibold">authentication</strong>, caching with{" "}
+        <strong className="text-foreground font-semibold">Redis</strong>, background jobs, and asynchronous workflows using{" "}
+        <strong className="text-foreground font-semibold">Kafka</strong>,{" "}
+        <strong className="text-foreground font-semibold">SQS</strong>,{" "}
+        <strong className="text-foreground font-semibold">WebSockets</strong>,{" "}
+        <strong className="text-foreground font-semibold">webhooks</strong>, Docker, and Linux.
+      </>,
+      <>
+        Developed backend systems with an emphasis on{" "}
+        <strong className="text-foreground font-semibold">API design</strong>, system architecture, and{" "}
+        <strong className="text-foreground font-semibold">system design</strong>.
+      </>,
+    ],
+  },
+  {
     role: "Backend Engineering Intern",
     company: "Dice Marketing & Advertising",
     project: "Spread Social Platform",
@@ -30,30 +64,31 @@ const EXPERIENCES: Experience[] = [
     logoAlt: "Dice Marketing & Advertising logo",
     bullets: [
       <>
-        Engineered backend services for a production-scale social media management and analytics platform, contributing{" "}
-        <strong className="text-foreground font-semibold">106+ commits</strong>,{" "}
-        <strong className="text-foreground font-semibold">19k+ LOC</strong>, and{" "}
-        <strong className="text-foreground font-semibold">40+ REST APIs</strong> across analytics, scheduling, media management, authentication, and competitor intelligence.
+        Engineered backend services for a production social media management and analytics platform, working across{" "}
+        <strong className="text-foreground font-semibold">analytics</strong>,{" "}
+        <strong className="text-foreground font-semibold">scheduling</strong>,{" "}
+        <strong className="text-foreground font-semibold">media management</strong>,{" "}
+        <strong className="text-foreground font-semibold">authentication</strong>, and{" "}
+        <strong className="text-foreground font-semibold">competitor intelligence</strong>.
       </>,
       <>
-        Architected a cross-platform competitor intelligence pipeline spanning{" "}
-        <strong className="text-foreground font-semibold">7 social networks</strong>, implementing{" "}
-        <strong className="text-foreground font-semibold">30+ scraping consumers</strong> and processing{" "}
-        <strong className="text-foreground font-semibold">200+ social metrics</strong> per competitor into{" "}
+        Designed and implemented asynchronous data pipelines using{" "}
+        <strong className="text-foreground font-semibold">Kafka</strong>,{" "}
+        <strong className="text-foreground font-semibold">Laravel Queues</strong>,{" "}
+        <strong className="text-foreground font-semibold">Redis</strong>,{" "}
+        <strong className="text-foreground font-semibold">Horizon</strong>, and{" "}
+        <strong className="text-foreground font-semibold">WebSockets</strong>, handling background processing, event-driven workflows, rate limiting, caching, and real-time updates.
+      </>,
+      <>
+        Built a cross-platform <strong className="text-foreground font-semibold">competitor intelligence pipeline</strong> integrating{" "}
+        <strong className="text-foreground font-semibold">Ayrshare</strong> and{" "}
+        <strong className="text-foreground font-semibold">Apify</strong>, collecting and processing social media data and persisting it in{" "}
         <strong className="text-foreground font-semibold">MongoDB</strong> and{" "}
-        <strong className="text-foreground font-semibold">ClickHouse</strong> for low-latency analytics and historical reporting.
+        <strong className="text-foreground font-semibold">ClickHouse</strong> for analytics and historical reporting.
       </>,
       <>
-        Built distributed asynchronous workflows using Laravel Queues,{" "}
-        <strong className="text-foreground font-semibold">Redis</strong>, Horizon,{" "}
-        <strong className="text-foreground font-semibold">WebSockets</strong>,{" "}
-        <strong className="text-foreground font-semibold">Ayrshare</strong>, and{" "}
-        <strong className="text-foreground font-semibold">Apify</strong>, including queue orchestration,{" "}
-        <strong className="text-foreground font-semibold">rate limiting</strong>, caching, background synchronization, and real-time event delivery.
-      </>,
-      <>
-        Optimized a production scheduler executing{" "}
-        <strong className="text-foreground font-semibold">2,000+ background jobs every 30 minutes</strong>, reducing redundant queue execution, improving worker throughput, and increasing infrastructure resource utilization under sustained production workloads.
+        Optimized production scheduling and background processing workflows handling{" "}
+        <strong className="text-foreground font-semibold">2,000+ jobs every 30 minutes</strong>, reducing redundant execution and improving worker throughput and resource utilization.
       </>,
     ],
   },
@@ -66,14 +101,21 @@ const EXPERIENCES: Experience[] = [
     status: "Completed",
     bullets: [
       <>
-        Taught backend development courses focused on{" "}
-        <strong className="text-foreground font-semibold">Node.js</strong>, APIs, and practical software engineering fundamentals for university and school students.
+        Taught programming and software development concepts, covering{" "}
+        <strong className="text-foreground font-semibold">programming fundamentals</strong>,{" "}
+        <strong className="text-foreground font-semibold">algorithms</strong>,{" "}
+        <strong className="text-foreground font-semibold">problem solving</strong>, and{" "}
+        <strong className="text-foreground font-semibold">object-oriented programming</strong>.
       </>,
       <>
-        Mentored learners through hands-on projects, code reviews, and problem-solving sessions, helping them build confidence shipping real applications.
+        Guided students through debugging and understanding their code rather than providing direct solutions, reinforcing how to reason through problems and grasp core concepts.
       </>,
       <>
-        Supported ElCoder&apos;s nonprofit mission by running workshops and community sessions that make computer science education more accessible.
+        Developed the ability to explain{" "}
+        <strong className="text-foreground font-semibold">complex technical ideas clearly</strong>, adapting explanations to students at different skill levels.
+      </>,
+      <>
+        Took responsibility for sessions, assignments, and technical guidance, mentoring learners through hands-on projects and code reviews.
       </>,
     ],
   },
@@ -81,7 +123,7 @@ const EXPERIENCES: Experience[] = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-20">
+    <section id="experience" className="py-20 bg-section-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-12">
@@ -116,7 +158,7 @@ const ExperienceSection = () => {
                           isCompleted &&
                             "border-primary shadow-[0_0_16px_hsl(var(--primary)/0.55)] animate-glow",
                           isCurrent &&
-                            "border-primary/70 shadow-[0_0_12px_hsl(var(--primary)/0.35)]",
+                            "border-primary/70 shadow-[0_0_12px_hsl(var(--primary)/0.35)] animate-glow",
                           !isCompleted && !isCurrent && "border-primary/40"
                         )}
                       >
@@ -134,7 +176,9 @@ const ExperienceSection = () => {
                         "group relative flex-1 overflow-hidden border-border/50 bg-gradient-card backdrop-blur-md transition-all duration-500",
                         isCompleted
                           ? "border-primary/50 shadow-glow animate-glow"
-                          : "hover:border-primary/40 hover:shadow-glow"
+                          : isCurrent
+                            ? "border-primary/50 shadow-glow animate-glow"
+                            : "hover:border-primary/40 hover:shadow-glow"
                       )}
                     >
                       <div
@@ -155,7 +199,7 @@ const ExperienceSection = () => {
                           <div
                             className={cn(
                               "shrink-0 p-2 rounded-xl bg-primary/10 overflow-hidden transition-all duration-300",
-                              isCompleted &&
+                              (isCompleted || isCurrent) &&
                                 "ring-1 ring-primary/40 shadow-[0_0_20px_hsl(var(--primary)/0.35)]"
                             )}
                           >

@@ -207,6 +207,54 @@
   .bg-gradient-section {
     background-image: var(--gradient-section);
   }
+
+  .bg-section-1 {
+    background: linear-gradient(180deg, hsl(210 35% 98%) 0%, hsl(210 33% 95%) 100%);
+  }
+
+  .bg-section-2 {
+    background: linear-gradient(180deg, hsl(210 31% 92%) 0%, hsl(210 29% 89%) 100%);
+  }
+
+  .bg-section-3 {
+    background: linear-gradient(180deg, hsl(210 27% 86%) 0%, hsl(210 25% 83%) 100%);
+  }
+
+  .bg-section-4 {
+    background: linear-gradient(180deg, hsl(210 23% 80%) 0%, hsl(210 21% 77%) 100%);
+  }
+
+  .bg-section-5 {
+    background: linear-gradient(180deg, hsl(210 19% 74%) 0%, hsl(210 17% 71%) 100%);
+  }
+
+  .bg-section-6 {
+    background: linear-gradient(180deg, hsl(210 15% 68%) 0%, hsl(210 13% 65%) 100%);
+  }
+
+  .dark .bg-section-1 {
+    background: linear-gradient(180deg, hsl(205 30% 8%) 0%, hsl(205 30% 9%) 100%);
+  }
+
+  .dark .bg-section-2 {
+    background: linear-gradient(180deg, hsl(205 28% 11%) 0%, hsl(205 28% 12%) 100%);
+  }
+
+  .dark .bg-section-3 {
+    background: linear-gradient(180deg, hsl(205 26% 14%) 0%, hsl(205 26% 15%) 100%);
+  }
+
+  .dark .bg-section-4 {
+    background: linear-gradient(180deg, hsl(205 24% 17%) 0%, hsl(205 24% 18%) 100%);
+  }
+
+  .dark .bg-section-5 {
+    background: linear-gradient(180deg, hsl(205 22% 20%) 0%, hsl(205 22% 21%) 100%);
+  }
+
+  .dark .bg-section-6 {
+    background: linear-gradient(180deg, hsl(205 20% 23%) 0%, hsl(205 20% 24%) 100%);
+  }
 }
 
 @keyframes glow-pulse {
