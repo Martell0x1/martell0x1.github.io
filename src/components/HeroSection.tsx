@@ -69,24 +69,42 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              Backend Developer focused on building reliable APIs, distributed
-              systems, and data-intensive applications. Experienced with .NET,
-              Node.js, PHP/Laravel, Redis, Docker, and databases, with a strong
-              interest in systems engineering and backend infrastructure.
+              <span className="text-primary font-medium">Backend Developer</span>{" "}
+              focused on building reliable{" "}
+              <span className="text-primary font-medium">APIs</span>,{" "}
+              <span className="text-primary font-medium">distributed systems</span>, and{" "}
+              <span className="text-primary font-medium">data-intensive applications</span>.
+              Experienced with{" "}
+              <span className="text-primary font-medium">.NET</span>,{" "}
+              <span className="text-primary font-medium">Node.js</span>,{" "}
+              <span className="text-primary font-medium">PHP/Laravel</span>,{" "}
+              <span className="text-primary font-medium">Redis</span>,{" "}
+              <span className="text-primary font-medium">Docker</span>, and databases, with a strong
+              interest in{" "}
+              <span className="text-primary font-medium">systems engineering</span> and{" "}
+              <span className="text-primary font-medium">backend infrastructure</span>.
             </p>
 
             <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-              I’m an FCDS student from Alexandria, Egypt, passionate about
-              Linux, Rust, open-source development, and understanding how
+              I’m an <span className="text-primary font-medium">FCDS</span> student from{" "}
+              <span className="text-primary font-medium">Alexandria, Egypt</span>, passionate about{" "}
+              <span className="text-primary font-medium">Linux</span>,{" "}
+              <span className="text-primary font-medium">Rust</span>,{" "}
+              <span className="text-primary font-medium">open-source development</span>, and understanding how
               systems work under the hood.
             </p>
 
             <p className="text-sm md:text-base text-foreground max-w-lg leading-relaxed rounded-xl border border-primary/40 bg-card/80 backdrop-blur-sm px-4 py-3 shadow-glow">
               <span className="font-semibold text-primary">Looking for:</span>{" "}
               <span className="text-foreground/95">
-                Backend / Systems roles and internships — remote or hybrid.
-                Interested in APIs, queues, distributed systems, data pipelines,
-                caching, and infrastructure.
+                <span className="text-primary font-medium">Backend / Systems roles and internships</span>{" "}
+                — remote or hybrid. Interested in{" "}
+                <span className="text-primary font-medium">APIs</span>,{" "}
+                <span className="text-primary font-medium">queues</span>,{" "}
+                <span className="text-primary font-medium">distributed systems</span>,{" "}
+                <span className="text-primary font-medium">data pipelines</span>,{" "}
+                <span className="text-primary font-medium">caching</span>, and{" "}
+                <span className="text-primary font-medium">infrastructure</span>.
               </span>
             </p>
 
