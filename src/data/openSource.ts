@@ -40,6 +40,13 @@ export const trackedRepos: TrackedRepo[] = [
     language: "Rust",
     description: "A Rust-based programming language with an interpreter and a compile/JIT path.",
   },
+  {
+    owner: "tokio-rs",
+    repo: "topcoat",
+    name: "Topcoat",
+    language: "Rust",
+    description: "A batteries-included framework for building full-stack web apps.",
+  },
 ];
 
 export const repoUrl = (owner: string, repo: string) =>
