@@ -47,6 +47,13 @@ export const trackedRepos: TrackedRepo[] = [
     language: "Rust",
     description: "A batteries-included framework for building full-stack web apps.",
   },
+  {
+    owner: "gabime",
+    repo: "spdlog",
+    name: "spdlog",
+    language: "C++",
+    description: "A very fast, header-only C++ logging library.",
+  },
 ];
 
 export const repoUrl = (owner: string, repo: string) =>
