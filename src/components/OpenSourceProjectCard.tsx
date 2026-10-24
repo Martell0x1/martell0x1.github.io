@@ -1,4 +1,4 @@
-import { ExternalLink, Github, GitPullRequest } from "lucide-react";
+import { ExternalLink, Github, GitPullRequest, Star, GitFork } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { Contribution, ContributionStatus, OpenSourceProject } from "@/data/openSource";
@@ -117,8 +117,20 @@ const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => {
     <article className="rounded-xl border border-border bg-card/70 p-6 hover:border-primary/30 transition-colors">
       <header className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="text-2xl font-semibold text-foreground">{project.name}</h2>
-        <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-muted-foreground">
           {project.language && <span>{project.language}</span>}
+          {project.stars != null && (
+            <span className="flex items-center gap-1">
+              <Star className="w-3 h-3" />
+              {project.stars.toLocaleString()}
+            </span>
+          )}
+          {project.forks != null && (
+            <span className="flex items-center gap-1">
+              <GitFork className="w-3 h-3" />
+              {project.forks.toLocaleString()}
+            </span>
+          )}
           <StatusSummary contributions={project.contributions} />
         </div>
       </header>

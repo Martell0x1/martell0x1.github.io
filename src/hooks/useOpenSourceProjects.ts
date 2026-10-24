@@ -47,17 +47,30 @@ export const useOpenSourceProjects = (): State => {
         }
         const mine = pulls.filter((p) => p.user?.login === GITHUB_USERNAME);
 
+        const meta = await fetch(base, { signal: AbortSignal.timeout(15000) });
+        if (!meta.ok) throw new Error(`Failed to load ${t.repo}`);
+        const repoMeta = await meta.json();
+
         return {
           name: t.name ?? t.repo,
           language: t.language,
           description: t.description,
           repositoryUrl: repoUrl(t.owner, t.repo),
+          stars: repoMeta.stargazers_count,
+          forks: repoMeta.forks_count,
           contributions: mine.map(mapPull),
           loading: false,
         } as OpenSourceProject;
       })
     )
-      .then((projects) => active && setState({ projects, error: null }))
+      .then((projects) => {
+        const sorted = [...projects].sort((a, b) => {
+          const starsDiff = (b.stars ?? 0) - (a.stars ?? 0);
+          if (starsDiff !== 0) return starsDiff;
+          return (b.forks ?? 0) - (a.forks ?? 0);
+        });
+        active && setState({ projects: sorted, error: null });
+      })
       .catch((err) => active && setState((s) => ({ ...s, error: err.message })));
 
     return () => {

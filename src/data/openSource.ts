@@ -18,6 +18,8 @@ export interface OpenSourceProject {
   language?: string;
   description?: string;
   repositoryUrl?: string;
+  stars?: number;
+  forks?: number;
   contributions: Contribution[];
   loading?: boolean;
 }
@@ -28,6 +30,8 @@ export interface TrackedRepo {
   name?: string;
   language?: string;
   description?: string;
+  stars?: number;
+  forks?: number;
 }
 
 export const GITHUB_USERNAME = "Martell0x1";
