@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import OpenSource from "./pages/OpenSource";
 import NotFound from "./pages/NotFound";
+import { OpenSourceProjectsProvider } from "@/hooks/useOpenSourceProjects";
 
 const queryClient = new QueryClient();
 
@@ -15,12 +16,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/open-source" element={<OpenSource />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <OpenSourceProjectsProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/open-source" element={<OpenSource />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </OpenSourceProjectsProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

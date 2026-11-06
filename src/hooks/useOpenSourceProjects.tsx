@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext, type ReactNode } from "react";
 import {
   GITHUB_USERNAME,
   trackedRepos,
@@ -15,13 +15,16 @@ interface State {
   error: string | null;
 }
 
-export const useOpenSourceProjects = (): State => {
+const OpenSourceContext = createContext<State | undefined>(undefined);
+
+export const OpenSourceProjectsProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<State>({
     projects: trackedRepos.map((t) => ({
       name: t.name ?? t.repo,
       language: t.language,
       description: t.description,
       repositoryUrl: repoUrl(t.owner, t.repo),
+      logoUrl: t.logoUrl,
       contributions: [],
       loading: true,
     })),
@@ -56,6 +59,7 @@ export const useOpenSourceProjects = (): State => {
           language: t.language,
           description: t.description,
           repositoryUrl: repoUrl(t.owner, t.repo),
+          logoUrl: t.logoUrl,
           stars: repoMeta.stargazers_count,
           forks: repoMeta.forks_count,
           contributions: mine.map(mapPull),
@@ -78,5 +82,15 @@ export const useOpenSourceProjects = (): State => {
     };
   }, []);
 
-  return state;
+  return <OpenSourceContext.Provider value={state}>{children}</OpenSourceContext.Provider>;
+};
+
+export const useOpenSourceProjects = (): State => {
+  const context = useContext(OpenSourceContext);
+  if (!context) {
+    throw new Error(
+      "useOpenSourceProjects must be used within OpenSourceProjectsProvider"
+    );
+  }
+  return context;
 };

@@ -92,6 +92,19 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
           <span className="text-muted-foreground">
             {item.prNumber ? `PR #${item.prNumber}` : "PR number pending"}
           </span>
+          {item.closesIssue && (
+            <span className="flex items-center gap-1 text-muted-foreground">
+              → closes{" "}
+              <a
+                href={item.closesIssue.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary hover:underline"
+              >
+                #{item.closesIssue.number}
+              </a>
+            </span>
+          )}
           {item.prUrl && (
             <a
               href={item.prUrl}
@@ -108,14 +121,35 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
   </li>
 );
 
+const projectLogo = (repositoryUrl?: string) => {
+  if (!repositoryUrl) return undefined;
+  const match = repositoryUrl.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+?)\/?$/);
+  if (!match) return undefined;
+  const [, owner, repo] = match;
+  return `https://opengraph.githubassets.com/${owner}/${repo}`;
+};
+
 const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => {
   const visible = project.loading
     ? []
     : project.contributions.filter((c) => c.status !== "closed");
 
+  const logoUrl = project.logoUrl ?? projectLogo(project.repositoryUrl);
+
   return (
     <article className="rounded-xl border border-border bg-card/70 p-6 hover:border-primary/30 transition-colors">
-      <header className="flex flex-wrap items-baseline justify-between gap-2">
+      {logoUrl && (
+        <img
+          src={logoUrl}
+          alt={`${project.name} logo`}
+          className="w-16 h-16 mb-4 rounded-lg object-cover border border-border/60 shadow-sm"
+          onError={(e) => {
+            (e.target as HTMLImageElement).style.display = "none";
+          }}
+        />
+      )}
+
+      <header className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
         <h2 className="text-2xl font-semibold text-foreground">{project.name}</h2>
         <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-muted-foreground">
           {project.language && <span>{project.language}</span>}
@@ -135,46 +169,46 @@ const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => {
         </div>
       </header>
 
-    <p className="mt-2 text-muted-foreground leading-relaxed">
-      {project.description ?? (
-        <span className="italic opacity-70">Project description coming soon.</span>
+      <p className="mt-2 text-muted-foreground leading-relaxed">
+        {project.description ?? (
+          <span className="italic opacity-70">Project description coming soon.</span>
+        )}
+      </p>
+
+      {project.loading ? (
+        <p className="mt-6 text-sm italic text-muted-foreground opacity-70">
+          Loading contributions…
+        </p>
+      ) : visible.length > 0 ? (
+        <>
+          <h3 className="mt-6 mb-3 text-sm font-mono uppercase tracking-wider text-muted-foreground">
+            Contributions
+          </h3>
+          <ul className="space-y-3">
+            {visible.map((c) => (
+              <ContributionRow key={c.prNumber ?? c.title} item={c} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p className="mt-6 text-sm italic text-muted-foreground opacity-70">
+          No open or merged contributions right now.
+        </p>
       )}
-    </p>
 
-    {project.loading ? (
-      <p className="mt-6 text-sm italic text-muted-foreground opacity-70">
-        Loading contributions…
-      </p>
-    ) : visible.length > 0 ? (
-      <>
-        <h3 className="mt-6 mb-3 text-sm font-mono uppercase tracking-wider text-muted-foreground">
-          Contributions
-        </h3>
-        <ul className="space-y-3">
-          {visible.map((c) => (
-            <ContributionRow key={c.prNumber ?? c.title} item={c} />
-          ))}
-        </ul>
-      </>
-    ) : (
-      <p className="mt-6 text-sm italic text-muted-foreground opacity-70">
-        No open or merged contributions right now.
-      </p>
-    )}
-
-    {project.repositoryUrl && (
-      <a
-        href={project.repositoryUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
-      >
-        <Github className="w-4 h-4" />
-        View Repository
-        <ExternalLink className="w-3 h-3" />
-      </a>
-    )}
-  </article>
+      {project.repositoryUrl && (
+        <a
+          href={project.repositoryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
+        >
+          <Github className="w-4 h-4" />
+          View Repository
+          <ExternalLink className="w-3 h-3" />
+        </a>
+      )}
+    </article>
   );
 };
 
