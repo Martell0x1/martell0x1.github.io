@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-26
+    runs-on: ubuntu-24.04
 
     steps:
       # 1. Checkout your repo
