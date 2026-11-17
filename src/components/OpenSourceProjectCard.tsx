@@ -56,6 +56,9 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
       <GitPullRequest className="w-4 h-4 mt-1 text-primary shrink-0" />
       <div className="min-w-0 space-y-2">
         <h4 className="font-medium text-foreground leading-snug">{item.title}</h4>
+        {item.description && (
+          <p className="text-sm text-muted-foreground">{item.description}</p>
+        )}
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
           {item.status ? (
             <Badge

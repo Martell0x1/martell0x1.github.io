@@ -7,6 +7,7 @@ export interface PRLabel {
 
 export interface Contribution {
   title: string;
+  description?: string;
   prNumber?: number;
   prUrl?: string;
   status?: ContributionStatus;
@@ -27,19 +28,49 @@ export interface OpenSourceProject {
 }
 
 export interface TrackedRepo {
-  owner: string;
-  repo: string;
+  owner?: string;
+  repo?: string;
   name?: string;
   language?: string;
   description?: string;
   logoUrl?: string;
   stars?: number;
   forks?: number;
+  // When set, these contributions are used directly instead of fetching from
+  // the GitHub API (useful for contributions that arrived via mailing list /
+  // patch series rather than a GitHub PR).
+  contributions?: Contribution[];
 }
 
 export const GITHUB_USERNAME = "Martell0x1";
 
 export const trackedRepos: TrackedRepo[] = [
+  {
+    name: "Linux Kernel",
+    language: "Rust",
+    description:
+      "The Linux kernel source tree. Contribution to the Rust-for-Linux subsystem.",
+    logoUrl: "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg",
+    stars: 160000,
+    forks: 60000,
+    contributions: [
+      {
+        title: "rust: kernel: fix lifetime of copy_from_iter_raw",
+        description: "Fixes a Use after free bug in the kernel.",
+        status: "merged",
+        prUrl:
+          "https://kernelthread.org/t/20261114024515.1000882-1-marawanzein222@gmail.com",
+        closesIssue: {
+          number: 1265,
+          url: "https://github.com/Rust-for-Linux/linux/issues/1265",
+        },
+        labels: [
+          { name: "rust-for-linux", color: "2ea44f" },
+          { name: "lifetime", color: "fbca04" },
+        ],
+      },
+    ],
+  },
   {
     owner: "muhammadyusufpov",
     repo: "hyper",
