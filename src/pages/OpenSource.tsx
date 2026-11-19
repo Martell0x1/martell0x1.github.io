@@ -6,8 +6,7 @@ import { useOpenSourceProjects } from "@/hooks/useOpenSourceProjects";
 
 
 const OpenSource = () => {
-  const { projects, error } = useOpenSourceProjects();
-  const hasProjects = projects.some((p) => p.contributions.length > 0);
+  const { projects } = useOpenSourceProjects();
 
   return (
     <div className="min-h-screen text-foreground bg-transparent">
@@ -20,32 +19,18 @@ const OpenSource = () => {
             </h1>
             <p className="text-muted-foreground max-w-2xl leading-relaxed">
               A collection of the open-source projects I've contributed to, with links to
-              the work I've done and the pull requests behind it. Loaded live from GitHub.
+              the work I've done and the pull requests behind it.
             </p>
 
             <div className="mt-10">
               <GitHubHeatmap />
             </div>
 
-            {error && (
-              <p className="mt-10 text-sm italic text-destructive">
-                Couldn't load contributions from GitHub: {error}
-              </p>
-            )}
-
-            {hasProjects || error ? (
-              <div className="mt-10 space-y-6">
-                {projects.map((project) => (
-                  <OpenSourceProjectCard key={project.name} project={project} />
-                ))}
-              </div>
-            ) : (
-              <p className="mt-10 text-sm italic text-muted-foreground opacity-70">
-                {projects.some((p) => p.loading)
-                  ? "Loading open-source contributions from GitHub…"
-                  : "Open-source contributions will appear here soon."}
-              </p>
-            )}
+            <div className="mt-10 space-y-6">
+              {projects.map((project) => (
+                <OpenSourceProjectCard key={project.name} project={project} />
+              ))}
+            </div>
           </div>
         </div>
       </main>

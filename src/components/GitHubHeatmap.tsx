@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { heatmapDays, heatmapTotal, type HeatmapDay } from "@/data/openSource";
 
 interface Day {
   date: string;
@@ -17,48 +17,30 @@ const levelClass = [
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const GitHubHeatmap = ({ username = "Martell0x1" }: { username?: string }) => {
-  const [days, setDays] = useState<Day[] | null>(null);
-  const [total, setTotal] = useState<number | null>(null);
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-    fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`)
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("failed"))))
-      .then((data) => {
-        if (!active) return;
-        setDays(data.contributions ?? []);
-        setTotal(data.total?.lastYear ?? null);
-      })
-      .catch(() => active && setFailed(true));
-    return () => {
-      active = false;
-    };
-  }, [username]);
-
-  if (failed) return null;
+  // Contribution activity graph data is maintained locally so the page loads
+  // instantly without any external request.
+  const days: Day[] = heatmapDays;
+  const total = heatmapTotal;
 
   const weeks: Day[][] = [];
-  if (days) {
-    let week: Day[] = [];
-    days.forEach((d, i) => {
-      const dow = new Date(d.date).getUTCDay();
-      if (i === 0 && dow > 0) week = Array(dow).fill(null) as unknown as Day[];
-      week.push(d);
-      if (dow === 6) {
-        weeks.push(week);
-        week = [];
-      }
-    });
-    if (week.length) weeks.push(week);
-  }
+  let week: Day[] = [];
+  days.forEach((d, i) => {
+    const dow = new Date(d.date).getUTCDay();
+    if (i === 0 && dow > 0) week = Array(dow).fill(null) as unknown as Day[];
+    week.push(d);
+    if (dow === 6) {
+      weeks.push(week);
+      week = [];
+    }
+  });
+  if (week.length) weeks.push(week);
 
   return (
     <section className="rounded-xl border border-border bg-card/70 p-6">
       <header className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
         <h2 className="text-lg font-semibold text-foreground">Contribution Activity</h2>
         <span className="text-xs font-mono text-muted-foreground">
-          {total !== null ? `${total} contributions in the last year` : "loading…"}
+          {total} contributions in the last year
         </span>
       </header>
 
@@ -79,14 +61,6 @@ const GitHubHeatmap = ({ username = "Martell0x1" }: { username?: string }) => {
               })}
             </div>
           ))}
-          {!days &&
-            Array.from({ length: 53 }).map((_, wi) => (
-              <div key={`s${wi}`} className="flex flex-col gap-[3px]">
-                {Array.from({ length: 7 }).map((_, di) => (
-                  <div key={di} className="w-[10px] h-[10px] rounded-[2px] bg-muted/30 animate-pulse" />
-                ))}
-              </div>
-            ))}
         </div>
       </div>
 

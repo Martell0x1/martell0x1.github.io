@@ -1,7 +1,7 @@
 import { ExternalLink, Github, GitPullRequest, Star, GitFork } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import type { Contribution, ContributionStatus, OpenSourceProject } from "@/data/openSource";
+import type { Contribution, OpenSourceProject } from "@/data/openSource";
 
 const statusLabel: Record<string, string> = {
   merged: "Merged",
@@ -15,50 +15,12 @@ const statusClass: Record<string, string> = {
   closed: "badge-status-closed",
 };
 
-const dotClass: Record<ContributionStatus, string> = {
-  merged: "status-dot-merged",
-  open: "status-dot-open",
-  closed: "status-dot-closed",
-};
-
-const statusOrder: ContributionStatus[] = ["open", "merged", "closed"];
-
-const summaryLabel: Record<ContributionStatus, string> = {
-  merged: "Merged",
-  open: "Open",
-  closed: "Closed",
-};
-
-const StatusSummary = ({ contributions }: { contributions: Contribution[] }) => {
-  if (contributions.length === 0) return null;
-  const count = (s: ContributionStatus) =>
-    contributions.filter((c) => c.status === s).length;
-  const total = contributions.length;
-
-  return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-      <span className="text-muted-foreground">
-        Total: <span className="font-semibold text-foreground">{total}</span>
-      </span>
-      {statusOrder.map((s) => (
-        <span key={s} className="flex items-center gap-1.5">
-          <span className={cn("status-dot", dotClass[s])} />
-          <span>{count(s)} {summaryLabel[s]}</span>
-        </span>
-      ))}
-    </div>
-  );
-};
-
 const ContributionRow = ({ item }: { item: Contribution }) => (
   <li className="rounded-lg border border-border/60 bg-background/40 p-4">
     <div className="flex items-start gap-2">
       <GitPullRequest className="w-4 h-4 mt-1 text-primary shrink-0" />
       <div className="min-w-0 space-y-2">
         <h4 className="font-medium text-foreground leading-snug">{item.title}</h4>
-        {item.description && (
-          <p className="text-sm text-muted-foreground">{item.description}</p>
-        )}
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
           {item.status ? (
             <Badge
@@ -67,11 +29,7 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
             >
               {statusLabel[item.status]}
             </Badge>
-          ) : (
-            <Badge variant="outline" className="font-mono text-[11px] text-muted-foreground">
-              Status pending
-            </Badge>
-          )}
+          ) : null}
           {item.labels && item.labels.length > 0 && (
             <>
               <span className="flex items-center gap-1.5">
@@ -92,9 +50,9 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
               </span>
             </>
           )}
-          <span className="text-muted-foreground">
-            {item.prNumber ? `PR #${item.prNumber}` : "PR number pending"}
-          </span>
+          {item.prNumber && (
+            <span className="text-muted-foreground">PR #{item.prNumber}</span>
+          )}
           {item.closesIssue && (
             <span className="flex items-center gap-1 text-muted-foreground">
               → closes{" "}
@@ -115,7 +73,8 @@ const ContributionRow = ({ item }: { item: Contribution }) => (
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-primary hover:underline"
             >
-              View PR <ExternalLink className="w-3 h-3" />
+              {item.prUrl.includes("github.com") ? "View PR" : "View discussion"}
+              <ExternalLink className="w-3 h-3" />
             </a>
           )}
         </div>
@@ -133,9 +92,7 @@ const projectLogo = (repositoryUrl?: string) => {
 };
 
 const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => {
-  const visible = project.loading
-    ? []
-    : project.contributions.filter((c) => c.status !== "closed");
+  const visible = project.contributions.filter((c) => c.status !== "closed");
 
   const logoUrl = project.logoUrl ?? projectLogo(project.repositoryUrl);
 
@@ -168,7 +125,6 @@ const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => {
               {project.forks.toLocaleString()}
             </span>
           )}
-          <StatusSummary contributions={project.contributions} />
         </div>
       </header>
 
@@ -178,11 +134,7 @@ const OpenSourceProjectCard = ({ project }: { project: OpenSourceProject }) => {
         )}
       </p>
 
-      {project.loading ? (
-        <p className="mt-6 text-sm italic text-muted-foreground opacity-70">
-          Loading contributions…
-        </p>
-      ) : visible.length > 0 ? (
+      {visible.length > 0 ? (
         <>
           <h3 className="mt-6 mb-3 text-sm font-mono uppercase tracking-wider text-muted-foreground">
             Contributions
